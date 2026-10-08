@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>About Us &amp; Editorial Masthead | Independence Magazine</title>
+  <meta name="description" content="Learn about Independence Magazine, our editorial charter, investigative mission, editorial board, and standards of biographical journalism.">
+  <link rel="canonical" href="https://independencemagazine.com/about.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,400;1,600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+
+  <style>
+    .page-hero {
+      padding: 50px 0 36px 0;
+      border-bottom: 1px solid var(--border-light);
+      background-color: var(--bg-secondary);
+      margin-bottom: 48px;
+    }
+    .page-hero-title {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+    .page-hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      max-width: 720px;
+      line-height: 1.6;
+    }
+    .about-article-body {
+      max-width: 860px;
+      margin: 0 auto 80px auto;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+    .about-article-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-top: 2em;
+      margin-bottom: 0.8em;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .about-article-body p {
+      margin-bottom: 1.5em;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin: 28px 0;
+    }
+    @media (max-width: 700px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+    .team-member-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xs);
+      padding: 22px;
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .team-member-card img {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border-light);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <aside class="top-utility-bar" aria-label="Edition Bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-item font-mono">Global Edition</span>
+        <span class="top-bar-divider">&bull;</span>
+        <span class="top-bar-item" style="color: var(--accent-crimson); font-weight: 700;">Verified Independent Press</span>
+      </div>
+      <div class="top-bar-right">
+        <a href="contact.html" class="top-bar-link">Contact Newsroom</a>
+        <span class="top-bar-divider">&bull;</span>
+        <a href="editorial-policy.html" class="top-bar-link">Editorial Policy</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Luxury Editorial Masthead -->
+  <div class="masthead-showcase">
+    <div class="container masthead-showcase-inner">
+      <div class="masthead-side-left">
+        <div class="masthead-tagline-box">
+          <div>Independent Journalism</div>
+          <div style="color: var(--accent-crimson); font-weight: 700;">News &amp; Biographies</div>
+        </div>
+      </div>
+
+      <div class="masthead-center-brand">
+        <a href="index.html" class="brand-masthead" aria-label="Independence Magazine - Homepage">
+          <div class="brand-title">Independence<span class="dot-accent">.</span></div>
+          <div class="brand-subtitle">MAGAZINE</div>
+        </a>
+      </div>
+
+      <div class="masthead-side-right">
+        <a href="index.html#newsletterSection" class="btn btn-primary btn-sm">Subscribe</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navigation Bar -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="sticky-compact-logo" aria-label="Independence Magazine">
+        <span class="compact-logo-text">Independence<span class="dot-accent">.</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNavList" role="navigation" aria-label="Primary Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="index.html#latestSection" class="nav-link">Biography</a>
+        <a href="index.html#latestSection" class="nav-link">Celebrity</a>
+        <a href="index.html#latestSection" class="nav-link">News</a>
+        <a href="index.html#latestSection" class="nav-link">Business</a>
+        <a href="index.html#latestSection" class="nav-link">Tech</a>
+        <a href="index.html#latestSection" class="nav-link">AI</a>
+        <a href="index.html#latestSection" class="nav-link">Crypto</a>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <button class="mobile-menu-toggle" id="mobileNavToggle" aria-label="Toggle navigation menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="category-badge" style="margin-bottom: 12px;">About the Publication</span>
+      <h1 class="page-hero-title">About Independence Magazine</h1>
+      <p class="page-hero-desc">
+        Independence Magazine is a dedicated digital publication committed to substantive news reporting, comprehensive biographies of public figures, and investigative inquiry into technology, capital, and global culture.
+      </p>
+    </div>
+  </section>
+
+  <!-- Editorial Content Body -->
+  <main class="container">
+    <article class="about-article-body">
+      <h2>Our Mission &amp; Editorial Purpose</h2>
+      <p class="lead-paragraph">
+        In an era saturated by automated click-aggregators and transient outrage, <strong>Independence Magazine</strong> was established on a single principle: truth and human depth cannot be automated.
+      </p>
+      <p>
+        Our newsroom specializes in long-form biography journalism—examining the real lives, critical turning points, private partnerships, and high-stakes decisions of the executives, artists, researchers, and public figures shaping our era. From Silicon Valley innovators to British cultural icons, we report with unvarnished accuracy, double-sourced facts, and narrative dignity.
+      </p>
+
+      <h2>Editorial Independence &amp; Ownership</h2>
+      <p>
+        Independence Magazine maintains complete, uncompromised editorial separation between our newsroom and any commercial or partner interests.
+      </p>
+      <ul>
+        <li><strong>No Pay-to-Play:</strong> We never accept payment, equity, or commercial gifts in exchange for favorable coverage or biographical inclusion.</li>
+        <li><strong>Strict Separation:</strong> All commercial partnerships, advertisements, or programmatic networks are strictly segregated from editorial decision-making.</li>
+        <li><strong>Double-Sourced Reporting:</strong> Every factual claim, biographical history, and financial estimate is verified through direct on-the-record sources or authoritative public records.</li>
+      </ul>
+
+      <h2 id="masthead">The Editorial Masthead</h2>
+      <p>
+        Our correspondents and editors bring decades of experience from leading international broadsheets, biographical archives, and specialized investigative desks:
+      </p>
+
+      <div class="team-grid">
+        <div class="team-member-card">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=240&q=80" alt="Gabriel Montgomery">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 2px;">Gabriel Montgomery</h4>
+            <div style="font-size: 0.74rem; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Editor-in-Chief</div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Former political correspondent and lead investigative author. Oversees all publication desks.</p>
+          </div>
+        </div>
+
+        <div class="team-member-card">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&q=80" alt="Sarah Jenkins">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 2px;">Sarah Jenkins</h4>
+            <div style="font-size: 0.74rem; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Senior Investigative Journalist &amp; Biographer</div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Specializes in tech founders, institutional leadership, and political biography profiles.</p>
+          </div>
+        </div>
+
+        <div class="team-member-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80" alt="David H. Miller">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 2px;">David H. Miller</h4>
+            <div style="font-size: 0.74rem; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Chief Cultural &amp; Society Biographer</div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Focuses on theatre, cinema, prominent families, and cultural history across the UK and Ireland.</p>
+          </div>
+        </div>
+
+        <div class="team-member-card">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80" alt="Elena Rostova">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 2px;">Elena Rostova</h4>
+            <div style="font-size: 0.74rem; color: var(--accent-crimson); font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">Senior Business &amp; Technology Reporter</div>
+            <p style="font-size: 0.84rem; color: var(--text-muted); margin: 0; line-height: 1.4;">Covers semiconductor supply chains, European business titans, and luxury heritage estates.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>Fact-Checking &amp; Verification Protocol</h2>
+      <p>
+        Every article published on Independence Magazine undergoes rigorous editorial review. We check claims against verified primary sources, state registries, corporate filings, and peer-reviewed studies. When sources request anonymity due to personal security or contractual nondisclosure agreements, their identities are confirmed directly by the Editor-in-Chief.
+      </p>
+
+      <h2>Corrections &amp; Contact</h2>
+      <p>
+        We welcome direct engagement from our readership. If you believe any fact in our reporting is in error, or wish to submit verified biographical documentation, contact our editorial team:
+      </p>
+      <div style="background-color: var(--bg-secondary); border-left: 4px solid var(--accent-crimson); padding: 18px 24px; border-radius: 4px; margin: 24px 0;">
+        <strong>Official Newsroom Contact:</strong><br>
+        Email: <a href="mailto:info.washingtontimes@gmail.com" style="color: var(--accent-crimson); font-weight: 700;">info.washingtontimes@gmail.com</a><br>
+        Response Window: Within 24 to 48 hours for verified correction submissions.
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="brand-masthead" style="align-items: flex-start;">
+            <div class="brand-title" style="color: #ffffff; font-size: 2rem;">Independence<span class="dot-accent">.</span></div>
+            <div class="brand-subtitle" style="color: #64748b; font-size: 0.65rem; margin-top: 3px;">MAGAZINE</div>
+          </div>
+          <p class="footer-brand-desc">
+            Independent biographical reporting, investigative journalism, business analysis, and cultural reporting.
+          </p>
+          <p style="font-size: 0.82rem; color: #cbd5e1;">
+            Official Contact: <a href="mailto:info.washingtontimes@gmail.com" style="color: var(--accent-crimson); font-weight: 700;">info.washingtontimes@gmail.com</a>
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Editorial Desks</h4>
+          <ul class="footer-links-list">
+            <li><a href="index.html#latestSection">Biography &amp; Profiles</a></li>
+            <li><a href="index.html#latestSection">Celebrity &amp; Society</a></li>
+            <li><a href="index.html#latestSection">News &amp; Investigations</a></li>
+            <li><a href="index.html#latestSection">Business &amp; Finance</a></li>
+            <li><a href="index.html#latestSection">Tech &amp; AI</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Standards</h4>
+          <ul class="footer-links-list">
+            <li><a href="editorial-policy.html">Editorial Charter</a></li>
+            <li><a href="editorial-policy.html#fact-checking">Fact-Checking Policy</a></li>
+            <li><a href="editorial-policy.html#corrections">Corrections Policy</a></li>
+            <li><a href="about.html">About the Newsroom</a></li>
+            <li><a href="contact.html">Pitch a Biography</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Publication &amp; Legal</h4>
+          <ul class="footer-links-list">
+            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="terms-of-service.html">Terms of Service</a></li>
+            <li><a href="disclaimer.html">Disclaimers &amp; Disclosure</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>
+          &copy; 2026 Independence Magazine. All Rights Reserved. Contact: info.washingtontimes@gmail.com
+        </div>
+        <div>
+          Digital Partner: <a href="https://digitalrank.io" target="_blank" rel="noopener">DigitalRank.io</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('mobileNavToggle')?.addEventListener('click', () => {
+      document.getElementById('mainNavList')?.classList.toggle('mobile-active');
+    });
+  </script>
+</body>
+</html>
