@@ -156,7 +156,10 @@ const SearchFilter = {
 
   selectArticle(id) {
     this.closeSearch();
-    if (window.ReaderModal) {
+    const art = window.ARTICLES_DATA.find(a => a.id === id || a.slug === id);
+    if (art && art.slug) {
+      window.location.href = `/${art.slug}/`;
+    } else if (window.ReaderModal) {
       window.ReaderModal.open(id);
     }
   },

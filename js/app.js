@@ -114,13 +114,13 @@ const App = {
     const mainCardContainer = document.getElementById("heroMainArticleWrap");
     if (mainCardContainer && mainStory) {
       mainCardContainer.innerHTML = `
-        <article class="hero-main-card" onclick="ReaderModal.open('${mainStory.id}')" aria-label="Lead Story: ${mainStory.title}">
+        <article class="hero-main-card" onclick="window.location.href='/${mainStory.slug}/'" style="cursor: pointer;" aria-label="Lead Story: ${mainStory.title}">
           <div class="hero-main-image-wrap">
             <span class="hero-category-overlay category-badge">${mainStory.category}</span>
             <img src="${mainStory.coverImage}" alt="${mainStory.title}" loading="eager" fetchpriority="high">
           </div>
           <div class="hero-main-content">
-            <h2 class="hero-main-headline">${mainStory.title}</h2>
+            <h2 class="hero-main-headline"><a href="/${mainStory.slug}/" style="color: inherit; text-decoration: none;">${mainStory.title}</a></h2>
             <p class="hero-main-excerpt">${mainStory.excerpt}</p>
             <div class="hero-main-footer">
               <div class="author-pill">
@@ -148,13 +148,13 @@ const App = {
     const subStoriesContainer = document.getElementById("heroSubArticlesWrap");
     if (subStoriesContainer) {
       subStoriesContainer.innerHTML = subStories.map(item => `
-        <article class="hero-sub-card" onclick="ReaderModal.open('${item.id}')" aria-label="Story: ${item.title}">
+        <article class="hero-sub-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="Story: ${item.title}">
           <div class="hero-sub-thumb">
             <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
           </div>
           <div class="hero-sub-details">
             <span class="category-badge dark" style="align-self: flex-start;">${item.category}</span>
-            <h3 class="hero-sub-title">${item.title}</h3>
+            <h3 class="hero-sub-title"><a href="/${item.slug}/" style="color: inherit; text-decoration: none;">${item.title}</a></h3>
             <div class="article-meta" style="font-size: 0.74rem;">
               <span>By ${item.author.name}</span>
               <span class="article-meta-divider"></span>
@@ -176,14 +176,14 @@ const App = {
     const trending = window.ARTICLES_DATA.filter(a => a.isTrending);
 
     track.innerHTML = trending.map((item, idx) => `
-      <div class="trending-card" onclick="ReaderModal.open('${item.id}')" role="button" tabindex="0">
+      <div class="trending-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" role="button" tabindex="0">
         <div class="trending-rank">0${item.trendingRank || idx + 1}</div>
         <div class="trending-thumb">
           <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
         </div>
         <div class="trending-content">
           <span class="trending-category">${item.category}</span>
-          <h4 class="trending-title">${item.title}</h4>
+          <h4 class="trending-title"><a href="/${item.slug}/" style="color: inherit; text-decoration: none;">${item.title}</a></h4>
           <span style="font-size: 0.72rem; color: var(--text-muted);">${item.readTime} • ${item.views}</span>
         </div>
       </div>
@@ -212,13 +212,13 @@ const App = {
     }
 
     grid.innerHTML = filtered.map(item => `
-      <article class="magazine-card" onclick="ReaderModal.open('${item.id}')" aria-label="${item.title}">
+      <article class="magazine-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="${item.title}">
         <div class="magazine-card-media">
           <span class="magazine-badge-pos category-badge">${item.category}</span>
           <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
         </div>
         <div class="magazine-card-body">
-          <h3 class="magazine-card-title">${item.title}</h3>
+          <h3 class="magazine-card-title"><a href="/${item.slug}/" style="color: inherit; text-decoration: none;">${item.title}</a></h3>
           <p class="magazine-card-excerpt">${item.excerpt}</p>
           <div class="magazine-card-footer">
             <div class="author-pill">
