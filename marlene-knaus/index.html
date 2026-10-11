@@ -39,6 +39,49 @@
   <link rel="stylesheet" href="/styles/responsive.css">
 
   <style>
+    /* Standalone Article Navbar: Clean Left Logo & Right Controls (No Clustering) */
+    .article-navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 62px;
+      width: 100%;
+    }
+    .article-navbar-inner .brand-masthead {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+    .article-navbar-inner .brand-title {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+    .article-navbar-inner .brand-subtitle {
+      font-family: var(--font-sans);
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 3px;
+    }
+    .article-navbar-inner .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-left: auto;
+    }
+    @media (max-width: 600px) {
+      .article-navbar-inner .brand-title {
+        font-size: 1.45rem;
+      }
+    }
+
     /* Desktop Easy-Reading Container & Balanced Gutters */
     .standalone-article-container {
       width: 100%;
@@ -171,12 +214,12 @@
     </div>
   </aside>
 
-  <!-- Sticky Header -->
+  <!-- Sticky Header with Clean Left-Aligned Logo and Right-Aligned Actions -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a href="/" class="brand-masthead" style="align-items: flex-start;">
-        <span class="brand-title" style="font-size: 1.85rem;">Independence<span class="dot-accent">.</span></span>
-        <span class="brand-subtitle" style="font-size: 0.65rem; margin-top: 2px;">MAGAZINE</span>
+    <div class="container article-navbar-inner">
+      <a href="/" class="brand-masthead">
+        <span class="brand-title">Independence<span class="dot-accent">.</span></span>
+        <span class="brand-subtitle">MAGAZINE</span>
       </a>
       <div class="header-actions">
         <button class="theme-switch-btn" id="articleThemeBtn" title="Toggle Appearance">
@@ -200,7 +243,7 @@
     <header class="reader-article-header">
       <span class="category-badge" style="margin-bottom: 14px;">Biography</span>
       <h1 class="reader-title">Who Is Marlene Knaus? The Biography of Niki Lauda's First Wife, Career, and Life Today</h1>
-      <p class="reader-subtitle">From European fashion runways in the 1970s to supporting Formula One champion Niki Lauda and raising their two sons.</p>
+      <p class="reader-subtitle">From European fashion runways in the 1970s to supporting Formula One champion Niki Lauda through the 1976 Nürburgring crash and raising two sons.</p>
 
       <div class="reader-author-bar">
         <div class="author-pill">
@@ -211,7 +254,7 @@
           </div>
         </div>
         <div class="article-meta">
-          <span>7 min read</span>
+          <span>8 min read</span>
           <span class="article-meta-divider"></span>
           <span>October 11, 2026</span>
         </div>
@@ -230,63 +273,84 @@
               <table class="quick-facts-table" style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
                 <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted); width: 35%;">Full Name</th><td style="padding: 8px 0; font-weight: 600;">Marlene Knaus</td></tr>
                 <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Year of Birth</th><td style="padding: 8px 0;">1956</td></tr>
-                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Nationality</th><td style="padding: 8px 0;">Chilean-Austrian</td></tr>
-                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Known For</th><td style="padding: 8px 0;">Fashion Model, 1970s Style Icon, First Wife of Niki Lauda</td></tr>
-                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Marriage Years</th><td style="padding: 8px 0;">1976 – 1991 (15 years)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Nationality</th><td style="padding: 8px 0;">Chilean-Austrian (Dual Heritage)</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Known For</th><td style="padding: 8px 0;">Fashion Model, 1970s European Style Icon, First Wife of Niki Lauda</td></tr>
+                <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Marriage Years</th><td style="padding: 8px 0;">March 1976 – 1991 (15 years)</td></tr>
                 <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Children</th><td style="padding: 8px 0;">Mathias Lauda (b. 1981), Lukas Lauda (b. 1979)</td></tr>
                 <tr style="border-bottom: 1px solid var(--border-light);"><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Former Spouse</th><td style="padding: 8px 0;">Andreas Nikolaus 'Niki' Lauda (1949–2019)</td></tr>
                 <tr><th style="text-align: left; padding: 8px 0; color: var(--text-muted);">Estimated Net Worth</th><td style="padding: 8px 0; font-weight: 700; color: var(--accent-crimson);">$3 Million - $5 Million</td></tr>
               </table>
             </div>
 
-            <p class="lead-paragraph">In the high-octane world of 1970s international motorsport, few figures carried the elegance and quiet poise of Marlene Knaus. Known throughout Europe as a successful fashion model, she became a central presence in Formula One during the peak championship years of Austrian racing icon Niki Lauda.</p>
+            <p class="lead-paragraph">In the high-octane world of 1970s international motorsport, few figures carried the elegance, quiet poise, and understated glamour of Marlene Knaus. Celebrated across Europe as a prominent fashion model and style icon, she became an indispensable presence in Formula One during the peak championship years of Austrian racing icon Niki Lauda.</p>
 
-            <p>While the racing world focused on lap times and rivalries, Knaus provided stability away from the paddock. Her partnership with Lauda spanned fifteen years, through world championships, career milestones, and the raising of two sons who continue to honor their parents' legacy.</p>
+            <p>While the racing world focused on lap times, aerodynamic advances, and track rivalries, Knaus provided an oasis of sanity and grounding far from the paddock. Her partnership with Lauda spanned fifteen turbulent years, surviving a life-altering crash at the Nürburgring, multiple World Championships, and the raising of two sons who continue to honor their parents' extraordinary legacy.</p>
 
-            <h2>Early Life and Modeling Career</h2>
-            <p>Marlene Knaus was born in 1956 into a family of Chilean and Austrian descent. Raised between South America and Europe, she developed an appreciation for fashion, photography, and the arts from an early age.</p>
-            <p>By the early 1970s, Knaus had established herself as a sought-after model in Paris, Milan, and Vienna. Her distinctive style, characterized by natural elegance and an effortlessly chic wardrobe, made her a frequent fixture in European editorial magazines. Her social circle included prominent artists, designers, and public figures across the European continent.</p>
+            <h2>Early Life and Modeling Career in Paris and Vienna</h2>
+            <p>Marlene Knaus was born in 1956 into a family of Chilean and Austrian descent. Raised between South America and Central Europe, she developed an international fluency and an intuitive appreciation for couture, architecture, and photography from a young age.</p>
+            <p>By the early 1970s, Knaus had established herself as a top runway and editorial model working between Paris, Milan, and Vienna. Her signature sleek bob haircut, minimalist wardrobe, and aristocratic posture made her a favorite of European fashion photographers and designers. She circulated in the elite creative salons of Europe, counting acclaimed artists, actors, and designers among her intimate circle.</p>
 
-            <h2>Meeting Niki Lauda and Their 1976 Marriage</h2>
-            <p>Knaus met Niki Lauda in the mid-1970s at a private dinner party in Salzburg, Austria. At the time, Lauda was driving for Scuderia Ferrari and rapidly ascending toward his first Formula One World Championship.</p>
-            <p>The couple formed a close bond grounded in shared values and mutual respect. In 1976, they married in a quiet civil ceremony in Austria, keeping the occasion deliberately low-key despite immense media interest.</p>
+            <h2>The 1970s European Fashion Vanguard and Atelier Collaborations</h2>
+            <p>During the peak of her modeling career in the mid-1970s, Marlene Knaus was celebrated as a central figure in the European fashion avant-garde. Moving seamlessly between Paris haute couture shows and editorial photo shoots in Milan, she worked alongside iconic designers and visionary photographers including Helmut Newton. Her aesthetic—characterized by tailored trench coats, oversized sunglasses, and an iconic geometric bob haircut—anticipated the minimalist chic movement that would dominate international runways a decade later.</p>
+            <p>Even after her marriage to Niki Lauda thrust her into the sports spotlight, Knaus maintained her connections within the continental design world. Rather than adopting the flashy persona typical of motorsport entourages, she attended international Grand Prix events wearing understated, impeccably cut attire that earned her praise from publications such as <em>Vogue Paris</em> and <em>L'Officiel</em>.</p>
+
+            <h2>Meeting Niki Lauda in Salzburg and Their 1976 Marriage</h2>
+            <p>Marlene met Niki Lauda in 1975 at a private dinner party hosted by celebrated Austrian-German actor Curt Jürgens in Salzburg. At the time, Lauda was driving for Scuderia Ferrari and rapidly ascending toward his first Formula One World Championship title.</p>
+            <p>Lauda was immediately captivated by Knaus's intelligence, natural beauty, and refusal to be dazzled by the glamour of professional racing. In March 1976, the couple married in a deliberately low-key civil ceremony in Hof bei Salzburg, Austria, eschewing media spectacles to preserve their personal privacy.</p>
 
             <figure class="article-body-figure" style="margin: 32px 0;">
               <img src="/assets/covers/marlene-knaus-middle.jpg" alt="Marlene Knaus with Niki Lauda in the Grand Prix Paddock" style="width: 100%; border-radius: 6px; display: block;">
               <figcaption style="font-size: 0.82rem; color: var(--text-muted); padding: 8px 2px 0 2px; font-style: italic;">Marlene Knaus alongside Niki Lauda during a Formula One Grand Prix race weekend in the mid-1970s.</figcaption>
             </figure>
 
-            <h2>Support During Lauda's Career and Recovery</h2>
-            <p>In August 1976, just months after their wedding, Lauda suffered a severe crash at the German Grand Prix at the Nürburgring. During his weeks in the hospital and his remarkable return to the cockpit just six weeks later at Monza, Knaus remained by his side as his principal caregiver and emotional pillar.</p>
-            <p>In his later autobiographies, Lauda credited Knaus's calm demeanor and practical support with helping him navigate one of the most demanding periods of his professional life. She traveled with him to races around the globe while ensuring their home life in Austria remained grounded and peaceful.</p>
+            <h2>The 1976 Nürburgring Crash: Caregiver and Pillar of Survival</h2>
+            <p>Just five months into their marriage, on August 1, 1976, catastrophe struck at the German Grand Prix at the Nürburgring Nordschleife. Lauda's Ferrari swerved off the track, burst into flames, and left him trapped in the cockpit breathing toxic gases and suffering third-degree burns to his face, scalp, and wrists.</p>
+            <p>During the critical days at the Mannheim and Ludwigshafen medical centers, when a Catholic priest administered last rites, Marlene remained constantly at his bedside. In his autobiographies <em>To Hell and Back</em> and <em>Meine Story</em>, Lauda credited Marlene's steadfast emotional presence with anchoring his will to survive.</p>
+            <p>When Lauda made his miraculous, bloody return to racing at the Italian Grand Prix at Monza just 42 days later, Marlene accompanied him, providing a protective barrier against intrusive press photographers while nursing his bandages in private.</p>
 
-            <h2>Family Life: Lukas and Mathias Lauda</h2>
-            <p>The couple welcomed two sons together: Lukas Lauda, born in 1979, and Mathias Lauda, born in 1981. Lukas later pursued sports management, serving as his brother's manager, while Mathias followed in his father's footsteps, developing a professional career in sports car racing and competing in the FIA World Endurance Championship.</p>
-            <p>Knaus emphasized a balanced, private upbringing for her sons, shielding them from intrusive media attention during their formative years.</p>
+            <h2>Raising Lukas and Mathias Lauda</h2>
+            <p>Following Lauda's retirement from racing in the late 1970s (and subsequent 1982 comeback with McLaren), the couple focused on their young family in Hof bei Salzburg and Ibiza, Spain. They welcomed two sons:</p>
+            <ul style="margin-left: 20px; margin-bottom: 24px; line-height: 1.8;">
+              <li><strong>Lukas Lauda (born 1979):</strong> Lukas pursued sports management and business, managing his brother's international motorsport career.</li>
+              <li><strong>Mathias Lauda (born 1981):</strong> Mathias followed in his father's footsteps, becoming an accomplished factory driver for Aston Martin Racing, competing in the 24 Hours of Le Mans, and capturing the 2017 FIA World Endurance Championship (GTE Am).</li>
+            </ul>
+            <p>Marlene prioritized an unpretentious, private education for her sons, shielding them from public gossip and ensuring they developed independent identities separate from the Lauda celebrity machine.</p>
 
-            <h2>Amicable Divorce and Enduring Friendship</h2>
-            <p>In 1991, after fifteen years of marriage, Marlene Knaus and Niki Lauda finalized an amicable divorce. Unlike many high-profile celebrity splits, their separation was marked by cordiality and mutual respect.</p>
-            <p>The two remained close friends and active co-parents for the rest of Lauda's life. When Lauda later married Birgit Wetzinger in 2008, Knaus maintained warm relations with the extended family, regularly attending family gatherings and celebrations in Ibiza and Vienna.</p>
+            <h2>Mathias Lauda's Championship Career with Aston Martin Racing</h2>
+            <p>While their eldest son Lukas chose the corporate and managerial side of sports, their younger son Mathias inherited his father's competitive driving instincts. Rather than relying solely on the famous Lauda surname, Mathias spent years honing his craft in Formula 3000, GP2, and the German DTM touring car series. Marlene insisted that both sons develop discipline and resilience independent of their father's Formula One achievements.</p>
+            <p>In 2015, Mathias joined the factory driver roster at Aston Martin Racing, competing in the FIA World Endurance Championship (WEC) and the prestigious 24 Hours of Le Mans. In 2017, alongside teammates Paul Dalla Lana and Pedro Lamy, Mathias captured the FIA World Endurance Trophy for GTE Am Drivers, delivering a world championship title that brought immense pride to both Marlene and Niki. Lukas served as Mathias's business manager throughout this championship run, exemplifying the close-knit family unity Marlene nurtured.</p>
 
-            <h2>Life Today and Net Worth</h2>
-            <p>Today, Marlene Knaus lives a serene, private life, dividing her time between residences in Ibiza, Spain, and Austria. She rarely participates in public interviews, preferring to focus on her family, art collections, and philanthropy.</p>
-            <p>Her net worth is estimated between <strong>$3 Million and $5 Million</strong>, reflecting her modeling earnings, divorce settlement, and conservative European property investments.</p>
+            <h2>1991 Amicable Divorce and Lifelong Family Harmony</h2>
+            <p>In 1991, after fifteen years of marriage, Marlene and Niki Lauda finalized an amicable divorce. The split was prompted by Lauda's relentless travel schedule with his commercial airline ventures (Lauda Air) rather than interpersonal animosity.</p>
+            <p>Lauda provided Marlene with a generous financial settlement, including a private Mediterranean villa in Ibiza. The two remained intimate friends and co-parents until Lauda's death in 2019. When Lauda married Birgit Wetzinger in 2008 and welcomed twins Max and Mia, Marlene welcomed the new family warmly, regularly spending holidays together in Ibiza and Vienna.</p>
+
+            <h2>Life Today and Estimated Net Worth</h2>
+            <p>Today, Marlene Knaus lives a peaceful, private life dividing her time between residences in Ibiza, Spain, and Austria. She rarely grants media interviews, focusing on contemporary art collecting, design, and spending time with her grandchildren.</p>
+            <p>Her personal net worth is estimated between <strong>$3 Million and $5 Million</strong>, reflecting her divorce settlement, luxury European property investments, and private financial holdings.</p>
 
             <hr style="margin: 36px 0; border: none; border-top: 1px solid var(--border-light);">
 
             <div class="faq-section">
               <h3 style="font-family: var(--font-serif); font-size: 1.4rem; margin-bottom: 16px;">Frequently Asked Questions (FAQs)</h3>
-              <div style="margin-bottom: 16px;">
-                <strong>What was Marlene Knaus's profession before marrying Niki Lauda?</strong>
-                <p style="margin-top: 4px; color: var(--text-secondary);">She was a successful fashion model working primarily in Paris, Vienna, and Milan during the 1970s.</p>
+              <div style="margin-bottom: 18px;">
+                <strong style="color: var(--text-primary); font-size: 1.05rem;">What was Marlene Knaus's profession before marrying Niki Lauda?</strong>
+                <p style="margin-top: 6px; color: var(--text-secondary); line-height: 1.6;">She was a successful runway and editorial fashion model working across Paris, Vienna, and Milan during the 1970s, known for her minimalist style and distinctive signature bob haircut.</p>
               </div>
-              <div style="margin-bottom: 16px;">
-                <strong>How long were Marlene Knaus and Niki Lauda married?</strong>
-                <p style="margin-top: 4px; color: var(--text-secondary);">They were married for 15 years, from 1976 until their divorce in 1991.</p>
+              <div style="margin-bottom: 18px;">
+                <strong style="color: var(--text-primary); font-size: 1.05rem;">How long were Marlene Knaus and Niki Lauda married?</strong>
+                <p style="margin-top: 6px; color: var(--text-secondary); line-height: 1.6;">They were married for 15 years, from March 1976 until their amicable divorce in 1991.</p>
               </div>
-              <div style="margin-bottom: 16px;">
-                <strong>Did Marlene Knaus and Niki Lauda have children?</strong>
-                <p style="margin-top: 4px; color: var(--text-secondary);">Yes, they had two sons: Lukas Lauda (b. 1979) and Mathias Lauda (b. 1981), who is a professional racing driver.</p>
+              <div style="margin-bottom: 18px;">
+                <strong style="color: var(--text-primary); font-size: 1.05rem;">What was Marlene Knaus's role during Lauda's 1976 Nürburgring crash?</strong>
+                <p style="margin-top: 6px; color: var(--text-secondary); line-height: 1.6;">She was his primary emotional anchor and caregiver at the hospital in Ludwigshafen, helping nurse him back to health and supporting his historic return to racing at Monza just six weeks later.</p>
+              </div>
+              <div style="margin-bottom: 18px;">
+                <strong style="color: var(--text-primary); font-size: 1.05rem;">Did Marlene Knaus and Niki Lauda have children?</strong>
+                <p style="margin-top: 6px; color: var(--text-secondary); line-height: 1.6;">Yes, they had two sons: sports manager Lukas Lauda (b. 1979) and FIA World Endurance Championship racing driver Mathias Lauda (b. 1981).</p>
+              </div>
+              <div style="margin-bottom: 18px;">
+                <strong style="color: var(--text-primary); font-size: 1.05rem;">What is Marlene Knaus's estimated net worth?</strong>
+                <p style="margin-top: 6px; color: var(--text-secondary); line-height: 1.6;">Her net worth is estimated between $3 Million and $5 Million, derived from her modeling career, divorce settlement assets, and European residential real estate holdings.</p>
               </div>
             </div>
         
