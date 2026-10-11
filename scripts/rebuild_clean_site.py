@@ -15,6 +15,25 @@ from articles_database import ALL_ARTICLES
 def render_article_html(article):
     canonical_url = f"https://www.independencemagazine.com{article['url']}"
     
+    related_candidates = [a for a in ALL_ARTICLES if a['id'] != article['id']]
+    same_cat = [a for a in related_candidates if a['categorySlug'] == article['categorySlug']]
+    diff_cat = [a for a in related_candidates if a['categorySlug'] != article['categorySlug']]
+    curated_related = (same_cat + diff_cat)[:3]
+
+    related_cards_html = ""
+    for rel in curated_related:
+        related_cards_html += f"""
+        <a href="{rel['url']}" class="related-profile-card" style="display: flex; flex-direction: column; text-decoration: none; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-xs); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;">
+          <div style="width: 100%; aspect-ratio: 16/9; overflow: hidden;">
+            <img src="/{rel['coverImage']}" alt="{rel['title']}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+          </div>
+          <div style="padding: 14px; display: flex; flex-direction: column; flex-grow: 1;">
+            <span style="font-size: 0.68rem; font-weight: 700; color: var(--accent-crimson); text-transform: uppercase; margin-bottom: 6px;">{rel['category']}</span>
+            <h4 style="font-family: var(--font-serif); font-size: 0.98rem; font-weight: 700; color: var(--text-primary); line-height: 1.35; margin-bottom: 8px;">{rel['title']}</h4>
+            <span style="font-size: 0.74rem; color: var(--text-muted); margin-top: auto;">{rel['readTime']} &bull; By {rel['author']['name']}</span>
+          </div>
+        </a>"""
+
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -182,6 +201,13 @@ def render_article_html(article):
     .bio-quick-facts-box {{
       margin: 28px 0;
     }}
+    .related-profile-card:hover {{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }}
+    .inline-related-box a:hover {{
+      text-decoration: underline !important;
+    }}
   </style>
 
   <!-- Schema.org JSON-LD Structured Data -->
@@ -286,6 +312,16 @@ def render_article_html(article):
     <div class="reader-prose">
       {article['contentHtml']}
     </div>
+
+    <!-- Internal Linking: Related Biographies Grid -->
+    <section class="related-profiles-section" style="margin-top: 50px; padding-top: 32px; border-top: 1px solid var(--border-light);">
+      <h3 style="font-family: var(--font-serif); font-size: 1.45rem; font-weight: 800; margin-bottom: 20px; color: var(--text-primary);">
+        Related Biographies & Recommended Reads
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
+        {related_cards_html}
+      </div>
+    </section>
 
     <!-- Author Bio Box -->
     <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-light); border-left: 3px solid var(--accent-crimson); border-radius: var(--radius-xs); padding: 22px; margin-top: 50px; display: flex; gap: 18px; align-items: center;">
