@@ -54,9 +54,9 @@ const ARTICLES_DATA = [
     "trendingRank": 4,
     "author": {
       "name": "Marcus Vance",
-      "role": "Sports & Public Affairs Biographer",
+      "role": "Investigative Features & Senior Editor",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
-      "bio": "Marcus Vance investigates sports history, athletic careers, and public profiles of prominent American and international figures."
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 12, 2026",
     "isoDate": "2026-10-12T11:00:00Z",
@@ -88,10 +88,10 @@ const ARTICLES_DATA = [
     "isTrending": true,
     "trendingRank": 5,
     "author": {
-      "name": "Jonathan Cole",
-      "role": "Entertainment & Legal Historian",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80",
-      "bio": "Jonathan Cole chronicles public records, corporate leadership, and artistic profiles of prominent entertainment figures."
+      "name": "Marcus Vance",
+      "role": "Investigative Features & Senior Editor",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 12, 2026",
     "isoDate": "2026-10-12T12:00:00Z",
@@ -159,9 +159,9 @@ const ARTICLES_DATA = [
     "trendingRank": 2,
     "author": {
       "name": "Marcus Vance",
-      "role": "Sports & Public Affairs Biographer",
+      "role": "Investigative Features & Senior Editor",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
-      "bio": "Marcus Vance investigates sports history, athletic careers, and public profiles of prominent American sports families."
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T12:30:00Z",
@@ -192,10 +192,10 @@ const ARTICLES_DATA = [
     "isTrending": true,
     "trendingRank": 3,
     "author": {
-      "name": "Jonathan Cole",
-      "role": "Entertainment & Legal Historian",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80",
-      "bio": "Jonathan Cole chronicles public legal records, corporate leadership, and matrimonial profiles of high-profile entertainment and business figures."
+      "name": "Sarah Jenkins",
+      "role": "Senior Biographical Correspondent",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&q=80",
+      "bio": "Sarah Jenkins is an award-winning biographer specializing in 20th-century public figures, sports icons, and cultural histories."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T13:00:00Z",
@@ -262,9 +262,9 @@ const ARTICLES_DATA = [
     "trendingRank": 5,
     "author": {
       "name": "Marcus Vance",
-      "role": "Sports & Public Affairs Biographer",
+      "role": "Investigative Features & Senior Editor",
       "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
-      "bio": "Marcus Vance investigates sports history, athletic careers, and public profiles of prominent American sports families."
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T09:30:00Z",
@@ -329,10 +329,10 @@ const ARTICLES_DATA = [
     "isTrending": false,
     "trendingRank": 7,
     "author": {
-      "name": "Jonathan Cole",
-      "role": "Entertainment & Legal Historian",
-      "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=240&q=80",
-      "bio": "Jonathan Cole chronicles public legal records, corporate leadership, and matrimonial profiles of high-profile entertainment and business figures."
+      "name": "Marcus Vance",
+      "role": "Investigative Features & Senior Editor",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T07:30:00Z",
@@ -363,10 +363,10 @@ const ARTICLES_DATA = [
     "isTrending": false,
     "trendingRank": 8,
     "author": {
-      "name": "Marcus Vance",
-      "role": "Sports & Public Affairs Biographer",
-      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
-      "bio": "Marcus Vance investigates sports history, athletic careers, and public profiles of prominent American sports families."
+      "name": "Sarah Jenkins",
+      "role": "Senior Biographical Correspondent",
+      "avatar": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=240&q=80",
+      "bio": "Sarah Jenkins is an award-winning biographer specializing in 20th-century public figures, sports icons, and cultural histories."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T07:00:00Z",
@@ -397,10 +397,10 @@ const ARTICLES_DATA = [
     "isTrending": false,
     "trendingRank": 9,
     "author": {
-      "name": "Elena Rostova",
-      "role": "Cultural Biographer & Senior Arts Critic",
-      "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=240&q=80",
-      "bio": "Elena Rostova covers international youth culture, athletic partnerships, and European social biographies."
+      "name": "Marcus Vance",
+      "role": "Investigative Features & Senior Editor",
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=240&q=80",
+      "bio": "Marcus Vance is a senior investigative journalist covering public affairs, athletic dynasties, and high-profile entertainment profiles."
     },
     "publishedAt": "October 11, 2026",
     "isoDate": "2026-10-11T06:30:00Z",
