@@ -45,46 +45,90 @@
   <link rel="stylesheet" href="/styles/responsive.css">
 
   <style>
-    /* Standalone Article Navbar: Clean Left Logo & Right Controls (No Clustering) */
+    /* Standalone Article Navbar: Perfectly Centered Masthead Logo */
     .article-navbar-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      height: 64px;
+      width: 100%;
+    }
+    .article-navbar-inner .header-nav-left {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      height: 62px;
-      width: 100%;
+      justify-self: start;
+    }
+    .article-navbar-inner .header-home-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: var(--radius-xs);
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-light);
+      transition: all 0.15s ease;
+    }
+    .article-navbar-inner .header-home-btn:hover {
+      color: var(--accent-crimson);
+      border-color: var(--accent-crimson);
+      transform: translateX(-2px);
     }
     .article-navbar-inner .brand-masthead {
       display: inline-flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
+      text-align: center;
       text-decoration: none;
+      justify-self: center;
     }
     .article-navbar-inner .brand-title {
       font-family: var(--font-serif);
-      font-size: 1.85rem;
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -0.025em;
       color: var(--text-primary);
       line-height: 1;
+      text-align: center;
     }
     .article-navbar-inner .brand-subtitle {
       font-family: var(--font-sans);
       font-size: 0.62rem;
       font-weight: 800;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-top: 3px;
+      margin-top: 4px;
+      text-align: center;
     }
     .article-navbar-inner .header-actions {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-left: auto;
+      gap: 12px;
+      justify-self: end;
     }
-    @media (max-width: 600px) {
+    .reading-progress-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent-crimson);
+      transition: width 0.08s ease;
+      z-index: 101;
+    }
+    @media (max-width: 680px) {
       .article-navbar-inner .brand-title {
         font-size: 1.45rem;
+      }
+      .article-navbar-inner .header-home-btn span {
+        display: none;
+      }
+      .article-navbar-inner .header-home-btn {
+        padding: 8px 10px;
       }
     }
 
@@ -231,23 +275,29 @@
   <aside class="top-utility-bar" aria-label="Edition Bar">
     <div class="container top-bar-inner">
       <div class="top-bar-left">
-        <a href="/" style="font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 6px;">
-          &larr; Independence Magazine Homepage
-        </a>
+        <span>Verified Independent Press &bull; Editorial Edition</span>
       </div>
       <div class="top-bar-right">
-        <span>Verified Independent Press</span>
+        <span>October 12, 2026</span>
       </div>
     </div>
   </aside>
 
-  <!-- Sticky Header with Clean Left-Aligned Logo and Right-Aligned Actions -->
-  <header class="site-header">
+  <!-- Sticky Header with Centered Masthead and Balanced Actions -->
+  <header class="site-header" style="position: sticky; top: 0; z-index: 100; background: var(--bg-primary); border-bottom: 1px solid var(--border-light);">
     <div class="container article-navbar-inner">
-      <a href="/" class="brand-masthead">
+      <div class="header-nav-left">
+        <a href="/" class="header-home-btn" title="Back to Homepage">
+          <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"/></svg>
+          <span>Home</span>
+        </a>
+      </div>
+
+      <a href="/" class="brand-masthead" aria-label="Independence Magazine Home">
         <span class="brand-title">Independence<span class="dot-accent">.</span></span>
         <span class="brand-subtitle">MAGAZINE</span>
       </a>
+
       <div class="header-actions">
         <button class="theme-switch-btn" id="articleThemeBtn" title="Toggle Appearance">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
@@ -255,6 +305,7 @@
         <a href="/#newsletterSection" class="btn btn-primary btn-sm">Subscribe</a>
       </div>
     </div>
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
   </header>
 
   <!-- Main Article Container -->
@@ -264,7 +315,7 @@
       <span>/</span>
       <a href="/#biography" style="color: var(--accent-crimson); font-weight: 600;">Biography</a>
       <span>/</span>
-      <span style="color: var(--text-primary);">Who Is Malaak Compton? The Biography of Chris Rock's Ex-Wife, Career, and Philanthropy</span>
+      <span style="color: var(--text-primary); max-width: 420px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; vertical-align: bottom;">Who Is Malaak Compton? The Biography of Chris Rock's Ex-Wife, Career, and Philanthropy</span>
     </div>
 
     <header class="reader-article-header">
@@ -489,6 +540,15 @@
       const next = curr === "light" ? "dark" : "light";
       document.documentElement.setAttribute("data-theme", next);
       localStorage.setItem("independence_theme", next);
+    });
+
+    // Reading progress bar
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('readingProgressBar');
+      if (!bar) return;
+      const totalH = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalH > 0 ? (window.scrollY / totalH) * 100 : 0;
+      bar.style.width = Math.min(100, Math.max(0, progress)) + '%';
     });
   </script>
 </body>
