@@ -117,7 +117,7 @@ const App = {
         <article class="hero-main-card" onclick="window.location.href='/${mainStory.slug}/'" style="cursor: pointer;" aria-label="Lead Story: ${mainStory.title}">
           <div class="hero-main-image-wrap">
             <span class="hero-category-overlay category-badge">${mainStory.category}</span>
-            <img src="${mainStory.coverImage}" alt="${mainStory.title}" loading="eager" fetchpriority="high">
+            <img src="${mainStory.coverImage}" alt="${mainStory.coverCaption || mainStory.title}" width="1200" height="675" loading="eager" fetchpriority="high">
           </div>
           <div class="hero-main-content">
             <h2 class="hero-main-headline"><a href="/${mainStory.slug}/" style="color: inherit; text-decoration: none;">${mainStory.title}</a></h2>
@@ -150,7 +150,7 @@ const App = {
       subStoriesContainer.innerHTML = subStories.map(item => `
         <article class="hero-sub-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="Story: ${item.title}">
           <div class="hero-sub-thumb">
-            <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
+            <img src="${item.coverImage}" alt="${item.coverCaption || item.title}" width="600" height="338" loading="lazy">
           </div>
           <div class="hero-sub-details">
             <span class="category-badge dark" style="align-self: flex-start;">${item.category}</span>
@@ -179,7 +179,7 @@ const App = {
       <div class="trending-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" role="button" tabindex="0">
         <div class="trending-rank">0${item.trendingRank || idx + 1}</div>
         <div class="trending-thumb">
-          <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
+          <img src="${item.coverImage}" alt="${item.coverCaption || item.title}" width="300" height="169" loading="lazy">
         </div>
         <div class="trending-content">
           <span class="trending-category">${item.category}</span>
@@ -215,7 +215,7 @@ const App = {
       <article class="magazine-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="${item.title}">
         <div class="magazine-card-media">
           <span class="magazine-badge-pos category-badge">${item.category}</span>
-          <img src="${item.coverImage}" alt="${item.title}" loading="lazy">
+          <img src="${item.coverImage}" alt="${item.coverCaption || item.title}" width="600" height="338" loading="lazy">
         </div>
         <div class="magazine-card-body">
           <h3 class="magazine-card-title"><a href="/${item.slug}/" style="color: inherit; text-decoration: none;">${item.title}</a></h3>

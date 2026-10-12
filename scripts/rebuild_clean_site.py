@@ -12,9 +12,20 @@ SITEMAP_FILE = os.path.join(BASE_DIR, "sitemap.xml")
 sys.path.append(SCRIPT_DIR)
 from articles_database import ALL_ARTICLES
 
+def xml_escape(text):
+    return (text.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace('"', "&quot;")
+                .replace("'", "&apos;"))
+
 def render_article_html(article):
     canonical_url = f"https://www.independencemagazine.com{article['url']}"
     
+    clean_caption = article['coverCaption'].replace('"', '&quot;')
+    clean_title = article['title'].replace('"', '&quot;')
+
+    # Compute 3 related articles (prefer same category, fallback to others)
     related_candidates = [a for a in ALL_ARTICLES if a['id'] != article['id']]
     same_cat = [a for a in related_candidates if a['categorySlug'] == article['categorySlug']]
     diff_cat = [a for a in related_candidates if a['categorySlug'] != article['categorySlug']]
@@ -22,10 +33,11 @@ def render_article_html(article):
 
     related_cards_html = ""
     for rel in curated_related:
+        rel_caption = rel['coverCaption'].replace('"', '&quot;')
         related_cards_html += f"""
         <a href="{rel['url']}" class="related-profile-card" style="display: flex; flex-direction: column; text-decoration: none; background: var(--bg-secondary); border: 1px solid var(--border-light); border-radius: var(--radius-xs); overflow: hidden; transition: transform 0.2s ease, box-shadow 0.2s ease;">
           <div style="width: 100%; aspect-ratio: 16/9; overflow: hidden;">
-            <img src="/{rel['coverImage']}" alt="{rel['title']}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+            <img src="/{rel['coverImage']}" alt="{rel_caption}" width="600" height="338" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
           </div>
           <div style="padding: 14px; display: flex; flex-direction: column; flex-grow: 1;">
             <span style="font-size: 0.68rem; font-weight: 700; color: var(--accent-crimson); text-transform: uppercase; margin-bottom: 6px;">{rel['category']}</span>
@@ -43,11 +55,16 @@ def render_article_html(article):
   <meta name="description" content="{article['excerpt']}">
   <link rel="canonical" href="{canonical_url}">
 
-  <!-- Open Graph / Social Meta Tags -->
+  <!-- Open Graph / Social Meta Tags (Google Images & Discover Enhanced) -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="{article['title']}">
+  <meta property="og:title" content="{clean_title}">
   <meta property="og:description" content="{article['excerpt']}">
   <meta property="og:image" content="https://www.independencemagazine.com/{article['coverImage']}">
+  <meta property="og:image:secure_url" content="https://www.independencemagazine.com/{article['coverImage']}">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675">
+  <meta property="og:image:alt" content="{clean_caption}">
   <meta property="og:url" content="{canonical_url}">
   <meta property="og:site_name" content="Independence Magazine">
   <meta property="article:published_time" content="{article['isoDate']}">
@@ -55,9 +72,10 @@ def render_article_html(article):
 
   <!-- Twitter Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{article['title']}">
+  <meta name="twitter:title" content="{clean_title}">
   <meta name="twitter:description" content="{article['excerpt']}">
   <meta name="twitter:image" content="https://www.independencemagazine.com/{article['coverImage']}">
+  <meta name="twitter:image:alt" content="{clean_caption}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
@@ -176,6 +194,7 @@ def render_article_html(article):
     }}
     .reader-cover-box img {{
       width: 100%;
+      height: auto;
       aspect-ratio: 16 / 9;
       object-fit: cover;
       border-radius: var(--radius-sm);
@@ -210,7 +229,7 @@ def render_article_html(article):
     }}
   </style>
 
-  <!-- Schema.org JSON-LD Structured Data -->
+  <!-- Google Structured Data (Schema.org NewsArticle & Rich ImageObject) -->
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -219,11 +238,24 @@ def render_article_html(article):
       "@type": "WebPage",
       "@id": "{canonical_url}"
     }},
-    "headline": "{article['title']}",
+    "headline": "{clean_title}",
     "description": "{article['excerpt']}",
-    "image": [
-      "https://www.independencemagazine.com/{article['coverImage']}"
-    ],
+    "image": {{
+      "@type": "ImageObject",
+      "url": "https://www.independencemagazine.com/{article['coverImage']}",
+      "contentUrl": "https://www.independencemagazine.com/{article['coverImage']}",
+      "caption": "{clean_caption}",
+      "description": "{clean_title}",
+      "width": 1200,
+      "height": 675
+    }},
+    "primaryImageOfPage": {{
+      "@type": "ImageObject",
+      "url": "https://www.independencemagazine.com/{article['coverImage']}",
+      "caption": "{clean_caption}",
+      "width": 1200,
+      "height": 675
+    }},
     "datePublished": "{article['isoDate']}",
     "dateModified": "{article['isoDate']}",
     "author": {{
@@ -290,7 +322,7 @@ def render_article_html(article):
 
       <div class="reader-author-bar">
         <div class="author-pill">
-          <img src="{article['author']['avatar']}" alt="{article['author']['name']}">
+          <img src="{article['author']['avatar']}" alt="{article['author']['name']}" width="40" height="40">
           <div>
             <div class="author-name">By {article['author']['name']}</div>
             <div style="font-size: 0.74rem; color: var(--text-muted);">{article['author']['role']}</div>
@@ -304,9 +336,18 @@ def render_article_html(article):
       </div>
     </header>
 
-    <figure class="reader-cover-box">
-      <img src="/{article['coverImage']}" alt="{article['title']}" style="width: 100%; border-radius: var(--radius-sm); display: block;">
-      <figcaption class="reader-caption">{article['coverCaption']}</figcaption>
+    <!-- Semantic Cover Image with Schema Microdata & SEO Attributes -->
+    <figure class="reader-cover-box" itemscope itemtype="https://schema.org/ImageObject">
+      <img itemprop="contentUrl"
+           src="/{article['coverImage']}" 
+           alt="{clean_caption}" 
+           title="{clean_title}" 
+           width="1200" 
+           height="675" 
+           fetchpriority="high" 
+           loading="eager" 
+           style="width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; border-radius: var(--radius-sm); display: block;">
+      <figcaption class="reader-caption" itemprop="caption">{article['coverCaption']}</figcaption>
     </figure>
 
     <div class="reader-prose">
@@ -325,7 +366,7 @@ def render_article_html(article):
 
     <!-- Author Bio Box -->
     <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-light); border-left: 3px solid var(--accent-crimson); border-radius: var(--radius-xs); padding: 22px; margin-top: 50px; display: flex; gap: 18px; align-items: center;">
-      <img src="{article['author']['avatar']}" alt="{article['author']['name']}" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-light);">
+      <img src="{article['author']['avatar']}" alt="{article['author']['name']}" width="64" height="64" style="width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border-light);">
       <div>
         <h4 style="font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 2px;">{article['author']['name']}</h4>
         <div style="font-size: 0.74rem; color: var(--accent-crimson); text-transform: uppercase; font-weight: 700; margin-bottom: 4px;">{article['author']['role']}</div>
@@ -432,66 +473,80 @@ if (typeof window !== 'undefined') {{
             f.write(html_content)
         print(f"Generated clean URL page: /{art['slug']}/index.html")
 
-    print("3. Updating sitemap.xml with all clean URLs...")
+    print("3. Updating sitemap.xml with Google Image Extension and clean URLs...")
     sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/about.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/contact.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/editorial-policy.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/privacy-policy.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/terms-of-service.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/disclaimer.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 """
     for art in ALL_ARTICLES:
+        cover_title = xml_escape(f"{art['title']} - Biography Photo")
+        cover_caption = xml_escape(art['coverCaption'])
         sitemap_xml += f"""  <url>
     <loc>https://www.independencemagazine.com{art['url']}</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-"""
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/{art['coverImage']}</image:loc>
+      <image:title>{cover_title}</image:title>
+      <image:caption>{cover_caption}</image:caption>
+    </image:image>"""
+        if art['slug'] == 'marlene-knaus':
+            sitemap_xml += """
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/marlene-knaus-middle.jpg</image:loc>
+      <image:title>Marlene Knaus alongside Niki Lauda in Formula One Paddock</image:title>
+      <image:caption>Marlene Knaus with Niki Lauda during a Grand Prix race weekend in the mid-1970s.</image:caption>
+    </image:image>"""
+        sitemap_xml += "\n  </url>\n"
     sitemap_xml += "</urlset>\n"
 
     with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
         f.write(sitemap_xml)
-    print("sitemap.xml updated with all 9 clean URLs!")
+    print("sitemap.xml updated with Google Image Extension and all clean URLs!")
 
 if __name__ == "__main__":
     main()

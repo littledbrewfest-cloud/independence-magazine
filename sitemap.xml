@@ -1,100 +1,151 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/about.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/contact.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/editorial-policy.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/privacy-policy.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/terms-of-service.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/disclaimer.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/wanda-hutchins/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/wanda-hutchins-cover.jpg</image:loc>
+      <image:title>Who Is Wanda Hutchins? The Biography of Michael Strahan&apos;s First Wife, Career, and Life Today - Biography Photo</image:title>
+      <image:caption>Wanda Hutchins: Interior designer, entrepreneur, and former wife of NFL icon and television host Michael Strahan.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/diane-addonizio/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/diane-addonizio-cover.jpg</image:loc>
+      <image:title>Who Is Diane Addonizio? Inside the Life and Career of Howie Long&apos;s Wife of Over 40 Years - Biography Photo</image:title>
+      <image:caption>Diane Addonizio: Attorney, philanthropist, and matriarch of the Long family football dynasty.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/roberta-raffel/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/roberta-raffel-cover.jpg</image:loc>
+      <image:title>Who Is Roberta Raffel? The Biography of Marcus Lemonis&apos;s Wife, Fashion Career, and Net Worth - Biography Photo</image:title>
+      <image:caption>Roberta &apos;Bobbi&apos; Raffel: High-fashion executive, retail investor, and wife of entrepreneur Marcus Lemonis.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/marlene-knaus/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/marlene-knaus-cover.jpg</image:loc>
+      <image:title>Who Is Marlene Knaus? The Biography of Niki Lauda&apos;s First Wife, Career, and Life Today - Biography Photo</image:title>
+      <image:caption>Marlene Knaus: European fashion model and former wife of Formula One champion Niki Lauda.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/marlene-knaus-middle.jpg</image:loc>
+      <image:title>Marlene Knaus alongside Niki Lauda in Formula One Paddock</image:title>
+      <image:caption>Marlene Knaus with Niki Lauda during a Grand Prix race weekend in the mid-1970s.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/cindy-deangelis-grossman/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/cindy-deangelis-grossman-cover.jpg</image:loc>
+      <image:title>Who Is Cindy DeAngelis Grossman? The Biography of Herschel Walker&apos;s Ex-Wife, Career, and Life Today - Biography Photo</image:title>
+      <image:caption>Cindy DeAngelis Grossman with her son Christian Walker.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/kaynette-williams/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/kaynette-williams-cover.jpg</image:loc>
+      <image:title>The Biography of Kaynette Williams: Inside Her Marriage to Blake Shelton, Career, and Life Today - Biography Photo</image:title>
+      <image:caption>Kaynette Williams: Educator, math specialist, and former first wife of country music star Blake Shelton.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/ian-alexander-sr/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/ian-alexander-sr-cover.jpg</image:loc>
+      <image:title>Who Is Ian Alexander Sr.? The Biography of Regina King&apos;s Ex-Husband, Career, and Life Today - Biography Photo</image:title>
+      <image:caption>Ian Alexander Sr.: Media distribution executive and former husband of Academy Award-winning actress Regina King.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/kathryn-burrhus/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/kathryn-burrhus-cover.jpg</image:loc>
+      <image:title>Who Is Kathryn Burrhus? The Biography of Stone Cold Steve Austin&apos;s First Wife and Life Away from WWE - Biography Photo</image:title>
+      <image:caption>Kathryn Burrhus: Texas professional and former first wife of WWE Hall of Famer Stone Cold Steve Austin.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/mia-weier/</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/mia-weier-cover.jpg</image:loc>
+      <image:title>Who Is Mia Weier? The Biography of Surfing Star Kanoa Igarashi&apos;s Former Partner and Life Today - Biography Photo</image:title>
+      <image:caption>Mia Weier: Coastal California native, lifestyle curator, and former partner of Olympic surfer Kanoa Igarashi.</image:caption>
+    </image:image>
   </url>
 </urlset>

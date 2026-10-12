@@ -1,4 +1,12 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /assets/
+Allow: /assets/covers/
+
 Sitemap: https://www.independencemagazine.com/sitemap.xml
