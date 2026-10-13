@@ -4,49 +4,97 @@
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/about.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/contact.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/editorial-policy.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/privacy-policy.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/terms-of-service.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/disclaimer.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.independencemagazine.com/andi-rock/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/andi-rock-cover.jpg</image:loc>
+      <image:title>Andi Rock: Inside the Life of Chris Rock&apos;s Sister and Her Dedicated Career in Autism Therapy - Biography Photo</image:title>
+      <image:caption>Andi Rock, pediatric speech-language pathologist and only sister of comedian Chris Rock.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/andi-rock-middle.jpg</image:loc>
+      <image:title>Andi Rock: Inside the Life of Chris Rock&apos;s Sister and Her Dedicated Career in Autism Therapy - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Andi Rock: Inside the Life of Chris Rock&apos;s Sister and Her Dedicated Career in Autism Therapy during key career milestones.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.independencemagazine.com/jason-clarkson/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/jason-clarkson-cover.jpg</image:loc>
+      <image:title>Jason Clarkson: The Untold Story of Kelly Clarkson&apos;s Older Brother and Their Family Journey - Biography Photo</image:title>
+      <image:caption>Jason Clarkson, elder brother of Grammy-winning recording artist and daytime talk host Kelly Clarkson.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/jason-clarkson-middle.jpg</image:loc>
+      <image:title>Jason Clarkson: The Untold Story of Kelly Clarkson&apos;s Older Brother and Their Family Journey - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Jason Clarkson: The Untold Story of Kelly Clarkson&apos;s Older Brother and Their Family Journey during key career milestones.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.independencemagazine.com/elly-castle/</loc>
+    <lastmod>2026-10-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/elly-castle-cover.jpg</image:loc>
+      <image:title>Elly Castle: Inside Her 21-Year Marriage to John Schneider and Life After High-Profile Divorce - Biography Photo</image:title>
+      <image:caption>Elly Castle (Elvira Castle), actress and former longtime wife of Dukes of Hazzard star John Schneider.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/elly-castle-middle.jpg</image:loc>
+      <image:title>Elly Castle: Inside Her 21-Year Marriage to John Schneider and Life After High-Profile Divorce - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Elly Castle: Inside Her 21-Year Marriage to John Schneider and Life After High-Profile Divorce during key career milestones.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://www.independencemagazine.com/malaak-compton/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-12T10:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -57,7 +105,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/doug-robbie/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-12T11:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -68,7 +116,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/logan-romero-plant/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-12T12:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -79,7 +127,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/wanda-hutchins/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T12:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -90,7 +138,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/diane-addonizio/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T12:30:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -101,7 +149,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/roberta-raffel/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T13:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -112,7 +160,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/marlene-knaus/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T09:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -122,13 +170,13 @@
     </image:image>
     <image:image>
       <image:loc>https://www.independencemagazine.com/assets/covers/marlene-knaus-middle.jpg</image:loc>
-      <image:title>Marlene Knaus alongside Niki Lauda in Formula One Paddock</image:title>
-      <image:caption>Marlene Knaus with Niki Lauda during a Grand Prix race weekend in the mid-1970s.</image:caption>
+      <image:title>Who Is Marlene Knaus? The Biography of Niki Lauda&apos;s First Wife, Career, and Life Today - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Who Is Marlene Knaus? The Biography of Niki Lauda&apos;s First Wife, Career, and Life Today during key career milestones.</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/cindy-deangelis-grossman/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T09:30:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -139,7 +187,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/kaynette-williams/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T08:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -150,7 +198,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/ian-alexander-sr/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T07:30:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -161,7 +209,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/kathryn-burrhus/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T07:00:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -172,7 +220,7 @@
   </url>
   <url>
     <loc>https://www.independencemagazine.com/mia-weier/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-11T06:30:00Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>

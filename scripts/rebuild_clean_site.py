@@ -542,43 +542,43 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/about.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/contact.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/editorial-policy.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/privacy-policy.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/terms-of-service.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/disclaimer.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -586,9 +586,10 @@ if (typeof window !== 'undefined') {{
     for art in ALL_ARTICLES:
         cover_title = xml_escape(f"{art['title']} - Biography Photo")
         cover_caption = xml_escape(art['coverCaption'])
+        art_date = art.get('isoDate', '2026-10-13')
         sitemap_xml += f"""  <url>
     <loc>https://www.independencemagazine.com{art['url']}</loc>
-    <lastmod>2026-10-12</lastmod>
+    <lastmod>{art_date}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <image:image>
@@ -596,12 +597,18 @@ if (typeof window !== 'undefined') {{
       <image:title>{cover_title}</image:title>
       <image:caption>{cover_caption}</image:caption>
     </image:image>"""
-        if art['slug'] == 'marlene-knaus':
-            sitemap_xml += """
+        
+        # Check if middle image exists for this article
+        middle_rel = f"assets/covers/{art['slug']}-middle.jpg"
+        middle_full = os.path.join(BASE_DIR, middle_rel)
+        if os.path.exists(middle_full):
+            mid_title = xml_escape(f"{art['title']} - Editorial Portrait")
+            mid_caption = xml_escape(f"Editorial photo of {art['title']} during key career milestones.")
+            sitemap_xml += f"""
     <image:image>
-      <image:loc>https://www.independencemagazine.com/assets/covers/marlene-knaus-middle.jpg</image:loc>
-      <image:title>Marlene Knaus alongside Niki Lauda in Formula One Paddock</image:title>
-      <image:caption>Marlene Knaus with Niki Lauda during a Grand Prix race weekend in the mid-1970s.</image:caption>
+      <image:loc>https://www.independencemagazine.com/{middle_rel}</image:loc>
+      <image:title>{mid_title}</image:title>
+      <image:caption>{mid_caption}</image:caption>
     </image:image>"""
         sitemap_xml += "\n  </url>\n"
     sitemap_xml += "</urlset>\n"
