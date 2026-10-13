@@ -617,5 +617,12 @@ if (typeof window !== 'undefined') {{
         f.write(sitemap_xml)
     print("sitemap.xml updated with Google Image Extension and all clean URLs!")
 
+    print("4. Pre-rendering index.html for instant first-paint and SEO...")
+    try:
+        from prerender_index import prerender
+        prerender()
+    except Exception as e:
+        print("Prerender notice:", e)
+
 if __name__ == "__main__":
     main()
