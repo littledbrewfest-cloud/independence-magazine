@@ -152,29 +152,29 @@ def prerender():
 
     # Cache buster on script tags
     html = re.sub(
-        r'<script src="js/articles-data.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/articles-data.js?v=20261013e"></script>',
+        r'<script src="/?js/articles-data.js(\?v=[^"]*)?"></script>',
+        r'<script src="/js/articles-data.js?v=20261014a"></script>',
         html
     )
     html = re.sub(
-        r'<script src="js/reader-modal.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/reader-modal.js?v=20261013e"></script>',
+        r'<script src="/?js/reader-modal.js(\?v=[^"]*)?"></script>',
+        r'<script src="/js/reader-modal.js?v=20261014a"></script>',
         html
     )
     html = re.sub(
-        r'<script src="js/search-filter.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/search-filter.js?v=20261013e"></script>',
+        r'<script src="/?js/search-filter.js(\?v=[^"]*)?"></script>',
+        r'<script src="/js/search-filter.js?v=20261014a"></script>',
         html
     )
     html = re.sub(
-        r'<script src="js/app.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/app.js?v=20261013e"></script>',
+        r'<script src="/?js/app.js(\?v=[^"]*)?"></script>',
+        r'<script src="/js/app.js?v=20261014a"></script>',
         html
     )
 
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         f.write(html)
-    print("index.html pre-rendered with all 15 articles, Lead Hero, and cache-busting scripts!")
+    print(f"index.html pre-rendered with all {len(ALL_ARTICLES)} articles, Lead Hero, and cache-busting scripts!")
 
 if __name__ == "__main__":
     prerender()
