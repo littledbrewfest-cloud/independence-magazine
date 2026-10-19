@@ -1048,32 +1048,32 @@ const ARTICLES_DATA = [
 
 const CATEGORIES_DATA = [
   {
-    "name": "Biography",
-    "slug": "biography",
-    "description": "In-depth profiles, verified histories, and untold lives of influential global figures.",
-    "count": 13,
-    "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
-  },
-  {
     "name": "Celebrity",
     "slug": "celebrity",
-    "description": "Profiles of prominent personalities, public relationships, and cultural legacies.",
+    "description": "High-profile personalities, public marriages, net worth, and life stories.",
     "count": 16,
     "cover": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
   },
   {
-    "name": "Culture",
-    "slug": "culture",
-    "description": "Critical analysis of arts, heritage, societal movements, and modern discourse.",
-    "count": 3,
-    "cover": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=80"
+    "name": "Biography",
+    "slug": "biography",
+    "description": "Comprehensive life retrospectives, verified background, and archival career histories.",
+    "count": 13,
+    "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
   },
   {
-    "name": "Business",
-    "slug": "business",
-    "description": "Strategic enterprise, executive leadership, capital allocation, and market dynamics.",
-    "count": 2,
-    "cover": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+    "name": "Entertainment",
+    "slug": "entertainment",
+    "description": "Television, cinema, music lineages, and performing arts features.",
+    "count": 1,
+    "cover": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "name": "All Stories",
+    "slug": "all",
+    "description": "Browse our complete archive of fact-checked biographical features and investigative reports.",
+    "count": 30,
+    "cover": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80"
   }
 ];
 

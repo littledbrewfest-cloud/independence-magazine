@@ -166,20 +166,14 @@ ul, ol {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 24px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 0;
+  border-bottom: none;
   position: relative;
 }
 
 .section-header::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 50px;
-  height: 3px;
-  background-color: var(--accent-crimson);
+  display: none;
 }
 
 .section-header-title {

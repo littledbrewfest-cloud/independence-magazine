@@ -8,7 +8,7 @@
 --------------------------------------------------------------------------- */
 .top-utility-bar {
   background-color: var(--bg-primary);
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: none;
   font-size: 0.74rem;
   color: var(--text-muted);
   height: 36px;
@@ -56,8 +56,8 @@
 --------------------------------------------------------------------------- */
 .masthead-showcase {
   background-color: var(--bg-primary);
-  padding: 28px 0 24px 0;
-  border-bottom: 1px solid var(--border-light);
+  padding: 24px 0 20px 0;
+  border-bottom: none;
   position: relative;
 }
 
@@ -144,14 +144,14 @@
   background-color: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-bottom: 2px solid var(--text-primary);
+  border-bottom: none;
   z-index: 50;
   transition: all var(--transition-fast);
 }
 
 [data-theme="dark"] .site-header {
   background-color: rgba(10, 14, 23, 0.96);
-  border-bottom-color: var(--border-light);
+  border-bottom: none;
 }
 
 [data-theme="sepia"] .site-header {
@@ -257,22 +257,11 @@
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--text-primary);
+  color: var(--accent-crimson);
 }
 
 .nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--accent-crimson);
-  transition: width var(--transition-smooth);
-}
-
-.nav-link:hover::after, .nav-link.active::after {
-  width: 100%;
+  display: none;
 }
 
 /* Header Action Buttons */
@@ -311,9 +300,9 @@
    3. HERO SECTION (Cover Story & Special Investigation)
 --------------------------------------------------------------------------- */
 .hero-section {
-  padding-top: 32px;
-  padding-bottom: 44px;
-  border-bottom: 1px solid var(--border-light);
+  padding-top: 24px;
+  padding-bottom: 36px;
+  border-bottom: none;
 }
 
 .hero-editorial-grid {
@@ -410,11 +399,11 @@
   border-top: 1px solid var(--border-subtle);
 }
 
-/* Secondary Featured Column */
+/* Secondary Featured Column (Trending / Essential Reading) */
 .hero-secondary-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
 }
 
 .secondary-header-label {
@@ -428,13 +417,13 @@
   align-items: center;
   gap: 8px;
   padding-bottom: 6px;
-  border-bottom: 2px solid var(--text-primary);
+  border-bottom: none;
 }
 
 .hero-sub-card {
   display: flex;
-  gap: 14px;
-  padding: 12px;
+  gap: 12px;
+  padding: 10px 12px;
   background-color: var(--bg-card);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
@@ -451,8 +440,8 @@
 }
 
 .hero-sub-thumb {
-  width: 110px;
-  height: 84px;
+  width: 96px;
+  height: 68px;
   border-radius: var(--radius-xs);
   overflow: hidden;
   flex-shrink: 0;
@@ -473,15 +462,15 @@
 .hero-sub-details {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   flex-grow: 1;
 }
 
 .hero-sub-title {
   font-family: var(--font-serif);
-  font-size: 1.02rem;
+  font-size: 0.94rem;
   font-weight: 700;
-  line-height: 1.35;
+  line-height: 1.32;
   color: var(--text-primary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -498,9 +487,9 @@
    4. TRENDING SECTION ("Trending Now")
 --------------------------------------------------------------------------- */
 .trending-section {
-  padding-top: 28px;
-  padding-bottom: 28px;
-  border-bottom: 1px solid var(--border-light);
+  padding-top: 24px;
+  padding-bottom: 24px;
+  border-bottom: none;
   background-color: var(--bg-secondary);
 }
 
@@ -742,70 +731,77 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. CATEGORIES SECTION (SouthMag Style 4-Col Blocks)
+   6. CATEGORIES SECTION (Modern Topic Cards)
 --------------------------------------------------------------------------- */
 .category-blocks-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+  gap: 20px;
 }
 
 .category-block-card {
   position: relative;
   border-radius: var(--radius-sm);
   overflow: hidden;
-  aspect-ratio: 4 / 3;
-  background-color: var(--accent-navy);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
   cursor: pointer;
   transition: all var(--transition-smooth);
 }
 
-.category-block-card img.bg-image {
-  position: absolute;
-  top: 0;
-  left: 0;
+.category-block-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-crimson);
+}
+
+.category-block-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background-color: var(--bg-tertiary);
+}
+
+.category-block-media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.55;
-  transition: transform 0.5s ease, opacity 0.3s ease;
+  transition: transform 0.4s ease;
 }
 
-.category-block-card:hover img.bg-image {
+.category-block-card:hover .category-block-media img {
   transform: scale(1.05);
-  opacity: 0.45;
 }
 
-.category-block-gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(15, 23, 42, 0.1) 0%, rgba(15, 23, 42, 0.9) 100%);
-}
-
-.category-block-content {
-  position: relative;
-  z-index: 2;
-  color: #ffffff;
+.category-block-body {
+  padding: 16px 18px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .category-block-name {
   font-family: var(--font-serif);
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 4px;
-  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  transition: color var(--transition-fast);
+}
+
+.category-block-card:hover .category-block-name {
+  color: var(--accent-crimson);
 }
 
 .category-block-desc {
-  font-size: 0.76rem;
-  color: #cbd5e1;
-  line-height: 1.4;
-  margin-bottom: 10px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  margin-bottom: 12px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -813,13 +809,82 @@
 }
 
 .category-block-footer {
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.72rem;
   font-weight: 700;
+  color: var(--text-muted);
+}
+
+.category-block-action {
   color: var(--accent-crimson);
-  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: transform var(--transition-fast);
+}
+
+.category-block-card:hover .category-block-action {
+  transform: translateX(3px);
+}
+
+/* --------------------------------------------------------------------------
+   7. PAGINATION (12 Articles Per Page)
+--------------------------------------------------------------------------- */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 36px;
+  padding: 12px 0 0 0;
+  flex-wrap: wrap;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pagination-btn, .pagination-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  user-select: none;
+}
+
+.pagination-btn:hover:not(:disabled), .pagination-number:hover:not(.active) {
+  color: var(--text-primary);
+  border-color: var(--accent-crimson);
+  background-color: var(--bg-hover);
+}
+
+.pagination-number.active {
+  background-color: var(--accent-crimson);
+  color: #ffffff !important;
+  border-color: var(--accent-crimson);
+  font-weight: 700;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: var(--border-subtle);
 }
 
 /* --------------------------------------------------------------------------

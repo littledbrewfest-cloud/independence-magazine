@@ -168,7 +168,7 @@
   }
 
   .category-block-card {
-    aspect-ratio: 16 / 9;
+    aspect-ratio: auto;
   }
 
   .section-header {

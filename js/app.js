@@ -108,7 +108,7 @@ const App = {
   ------------------------------------------------------------------------ */
   renderHeroSection() {
     const mainStory = window.ARTICLES_DATA.find(a => a.isHeroMain) || window.ARTICLES_DATA[0];
-    const subStories = window.ARTICLES_DATA.filter(a => a.isHeroSub).slice(0, 3);
+    const subStories = window.ARTICLES_DATA.filter(a => a.slug !== mainStory.slug).slice(0, 5);
 
     // Main Card
     const mainCardContainer = document.getElementById("heroMainArticleWrap");
@@ -144,18 +144,18 @@ const App = {
       `;
     }
 
-    // Sub Stories
+    // Sub Stories (5 Stories to fill the right column)
     const subStoriesContainer = document.getElementById("heroSubArticlesWrap");
     if (subStoriesContainer) {
       subStoriesContainer.innerHTML = subStories.map(item => `
         <article class="hero-sub-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="Story: ${item.title}">
           <div class="hero-sub-thumb">
-            <img src="/${item.coverImage.replace(/^\//, '')}" alt="${item.coverCaption || item.title}" width="600" height="338" loading="lazy">
+            <img src="/${item.coverImage.replace(/^\//, '')}" alt="${item.coverCaption || item.title}" width="300" height="169" loading="lazy">
           </div>
           <div class="hero-sub-details">
-            <span class="category-badge dark" style="align-self: flex-start;">${item.category}</span>
+            <span class="category-badge dark" style="align-self: flex-start; font-size: 0.65rem; padding: 2px 7px;">${item.category}</span>
             <h3 class="hero-sub-title"><a href="/${item.slug}/" style="color: inherit; text-decoration: none;">${item.title}</a></h3>
-            <div class="article-meta" style="font-size: 0.74rem;">
+            <div class="article-meta" style="font-size: 0.72rem;">
               <span>By ${item.author.name}</span>
               <span class="article-meta-divider"></span>
               <span>${item.readTime}</span>
@@ -191,10 +191,18 @@ const App = {
   },
 
   /* ------------------------------------------------------------------------
-     LATEST ARTICLES SECTION (3-Col Grid)
+     LATEST ARTICLES SECTION (3-Col Grid with 12 Articles Per Page Pagination)
   ------------------------------------------------------------------------ */
-  renderLatestArticles(categorySlug = "all") {
+  currentCategory: "all",
+  currentPage: 1,
+  itemsPerPage: 12,
+
+  renderLatestArticles(categorySlug = "all", page = 1) {
+    this.currentCategory = categorySlug;
+    this.currentPage = page;
+
     const grid = document.getElementById("latestArticlesGrid");
+    const paginationContainer = document.getElementById("latestPagination");
     if (!grid) return;
 
     let filtered = window.ARTICLES_DATA;
@@ -208,10 +216,17 @@ const App = {
           No stories filed under this category yet. Check back soon.
         </div>
       `;
+      if (paginationContainer) paginationContainer.innerHTML = "";
       return;
     }
 
-    grid.innerHTML = filtered.map(item => `
+    const totalPages = Math.ceil(filtered.length / this.itemsPerPage);
+    if (this.currentPage > totalPages) this.currentPage = 1;
+
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const pageItems = filtered.slice(startIndex, startIndex + this.itemsPerPage);
+
+    grid.innerHTML = pageItems.map(item => `
       <article class="magazine-card" onclick="window.location.href='/${item.slug}/'" style="cursor: pointer;" aria-label="${item.title}">
         <div class="magazine-card-media">
           <span class="magazine-badge-pos category-badge">${item.category}</span>
@@ -236,6 +251,38 @@ const App = {
         </div>
       </article>
     `).join("");
+
+    // Render Pagination Controls
+    if (paginationContainer) {
+      if (totalPages <= 1) {
+        paginationContainer.innerHTML = "";
+      } else {
+        let pagesHtml = "";
+        for (let p = 1; p <= totalPages; p++) {
+          pagesHtml += `<button class="pagination-number ${p === this.currentPage ? 'active' : ''}" onclick="App.goToPage(${p})" aria-label="Page ${p}" ${p === this.currentPage ? 'aria-current="page"' : ''}>${p}</button>`;
+        }
+
+        paginationContainer.innerHTML = `
+          <button class="pagination-btn pagination-prev" onclick="App.goToPage(${this.currentPage - 1})" ${this.currentPage === 1 ? 'disabled' : ''} aria-label="Previous Page">
+            &larr; Prev
+          </button>
+          <div class="pagination-numbers">
+            ${pagesHtml}
+          </div>
+          <button class="pagination-btn pagination-next" onclick="App.goToPage(${this.currentPage + 1})" ${this.currentPage === totalPages ? 'disabled' : ''} aria-label="Next Page">
+            Next &rarr;
+          </button>
+        `;
+      }
+    }
+  },
+
+  goToPage(pageNum) {
+    this.renderLatestArticles(this.currentCategory, pageNum);
+    const targetSection = document.getElementById("latestSection");
+    if (targetSection) {
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    }
   },
 
   /* ------------------------------------------------------------------------
@@ -247,14 +294,15 @@ const App = {
 
     container.innerHTML = window.CATEGORIES_DATA.map(cat => `
       <div class="category-block-card" onclick="App.filterToCategory('${cat.slug}')" role="button" tabindex="0">
-        <img class="bg-image" src="${cat.cover}" alt="${cat.name}" loading="lazy">
-        <div class="category-block-gradient"></div>
-        <div class="category-block-content">
+        <div class="category-block-media">
+          <img src="${cat.cover}" alt="${cat.name}" loading="lazy">
+        </div>
+        <div class="category-block-body">
           <h3 class="category-block-name">${cat.name}</h3>
           <p class="category-block-desc">${cat.description}</p>
           <div class="category-block-footer">
-            <span>${cat.count} ARTICLES</span>
-            <span style="display: flex; align-items: center; gap: 4px;">EXPLORE &rarr;</span>
+            <span>${cat.count} STORIES</span>
+            <span class="category-block-action">EXPLORE &rarr;</span>
           </div>
         </div>
       </div>
@@ -267,7 +315,7 @@ const App = {
       document.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
       tab.classList.add("active");
     }
-    this.renderLatestArticles(categorySlug);
+    this.renderLatestArticles(categorySlug, 1);
     const targetSection = document.getElementById("latestSection");
     if (targetSection) {
       targetSection.scrollIntoView({ behavior: "smooth" });
@@ -275,9 +323,11 @@ const App = {
   },
 
   /* ------------------------------------------------------------------------
-     NEWSLETTER SUBSCRIPTION
+     NEWSLETTER SUBSCRIPTION (Optional / Safe)
   ------------------------------------------------------------------------ */
   initNewsletter() {
+    const form = document.getElementById("newsletterSignupForm");
+    if (!form) return;
     document.querySelectorAll(".topic-chip").forEach(chip => {
       chip.addEventListener("click", () => {
         chip.classList.toggle("selected");

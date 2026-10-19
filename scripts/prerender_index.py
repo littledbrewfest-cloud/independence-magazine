@@ -47,12 +47,12 @@ def generate_hero_sub(art):
     clean_title = art['title'].replace('"', '&quot;')
     return f"""<article class="hero-sub-card" onclick="window.location.href='{art['url']}'" style="cursor: pointer;" aria-label="Story: {clean_title}">
           <div class="hero-sub-thumb">
-            <img src="{img_url}" alt="{clean_caption}" width="600" height="338" loading="lazy">
+            <img src="{img_url}" alt="{clean_caption}" width="300" height="169" loading="lazy">
           </div>
           <div class="hero-sub-details">
-            <span class="category-badge dark" style="align-self: flex-start;">{art['category']}</span>
+            <span class="category-badge dark" style="align-self: flex-start; font-size: 0.65rem; padding: 2px 7px;">{art['category']}</span>
             <h3 class="hero-sub-title"><a href="{art['url']}" style="color: inherit; text-decoration: none;">{art['title']}</a></h3>
-            <div class="article-meta" style="font-size: 0.74rem;">
+            <div class="article-meta" style="font-size: 0.72rem;">
               <span>By {art['author']['name']}</span>
               <span class="article-meta-divider"></span>
               <span>{art['readTime']}</span>
@@ -110,17 +110,84 @@ def prerender():
         html = f.read()
 
     main_art = next((a for a in ALL_ARTICLES if a.get("isHeroMain")), ALL_ARTICLES[0])
-    sub_arts = [a for a in ALL_ARTICLES if a.get("isHeroSub")][:3]
+    sub_arts = [a for a in ALL_ARTICLES if a['slug'] != main_art['slug']][:5]
     trending_arts = sorted([a for a in ALL_ARTICLES if a.get("isTrending")], key=lambda x: x.get("trendingRank", 99))[:6]
 
     hero_main_html = "\n" + generate_hero_main(main_art) + "\n        "
     hero_subs_html = "\n" + "\n".join(generate_hero_sub(a) for a in sub_arts) + "\n          "
     trending_html = "\n" + "\n".join(generate_trending(a, idx + 1) for idx, a in enumerate(trending_arts)) + "\n          "
-    latest_html = "\n" + "\n".join(generate_magazine_card(a) for a in ALL_ARTICLES) + "\n      "
+    latest_html = "\n" + "\n".join(generate_magazine_card(a) for a in ALL_ARTICLES[:12]) + "\n      "
+
+    # Pre-render pagination for Page 1
+    total_pages = (len(ALL_ARTICLES) + 11) // 12
+    pages_btns = []
+    for p in range(1, total_pages + 1):
+        active_cls = "active" if p == 1 else ""
+        aria_curr = 'aria-current="page"' if p == 1 else ""
+        pages_btns.append(f'<button class="pagination-number {active_cls}" onclick="App.goToPage({p})" aria-label="Page {p}" {aria_curr}>{p}</button>')
+    pages_btn_html = "".join(pages_btns)
+    pagination_html = f"""
+        <button class="pagination-btn pagination-prev" onclick="App.goToPage(1)" disabled aria-label="Previous Page">&larr; Prev</button>
+        <div class="pagination-numbers">
+          {pages_btn_html}
+        </div>
+        <button class="pagination-btn pagination-next" onclick="App.goToPage(2)" aria-label="Next Page">Next &rarr;</button>
+      """
+
+    # Category Blocks
+    bio_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'biography'])
+    celeb_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'celebrity'])
+    ent_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'entertainment'])
+    cats = [
+      {
+        "name": "Celebrity",
+        "slug": "celebrity",
+        "description": "High-profile personalities, public marriages, net worth, and life stories.",
+        "count": celeb_count,
+        "cover": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Biography",
+        "slug": "biography",
+        "description": "Comprehensive life retrospectives, verified background, and archival career histories.",
+        "count": bio_count,
+        "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Entertainment",
+        "slug": "entertainment",
+        "description": "Television, cinema, music lineages, and performing arts features.",
+        "count": ent_count or 1,
+        "cover": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "All Stories",
+        "slug": "all",
+        "description": "Browse our complete archive of fact-checked biographical features and investigative reports.",
+        "count": len(ALL_ARTICLES),
+        "cover": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+    def gen_cat(cat):
+        return f"""<div class="category-block-card" onclick="App.filterToCategory('{cat['slug']}')" role="button" tabindex="0">
+        <div class="category-block-media">
+          <img src="{cat['cover']}" alt="{cat['name']}" loading="lazy">
+        </div>
+        <div class="category-block-body">
+          <h3 class="category-block-name">{cat['name']}</h3>
+          <p class="category-block-desc">{cat['description']}</p>
+          <div class="category-block-footer">
+            <span>{cat['count']} STORIES</span>
+            <span class="category-block-action">EXPLORE &rarr;</span>
+          </div>
+        </div>
+      </div>"""
+
+    cats_html = "\n" + "\n".join(gen_cat(c) for c in cats) + "\n      "
 
     # Replace heroMainArticleWrap content
     html = re.sub(
-        r'(<div id="heroMainArticleWrap">)(.*?)(</div>\s*<!-- 3 Secondary)',
+        r'(<div id="heroMainArticleWrap">)(.*?)(</div>\s*<!-- \d+ Secondary|</div>\s*<!-- 3 Secondary)',
         rf'\1{hero_main_html}\3',
         html,
         flags=re.DOTALL
@@ -142,39 +209,48 @@ def prerender():
         flags=re.DOTALL
     )
 
-    # Replace latestArticlesGrid content
+    # Replace latestArticlesGrid and latestPagination content
     html = re.sub(
-        r'(<div class="magazine-grid" id="latestArticlesGrid">)(.*?)(</div>\s*</section>)',
-        rf'\1{latest_html}\3',
+        r'(<div class="magazine-grid" id="latestArticlesGrid">).*?(<!-- Pagination Controls.*?</div>\s*</section>|</div>\s*<!-- Pagination Controls.*?</div>\s*</section>)',
+        rf'\1{latest_html}</div>\n\n      <!-- Pagination Controls (12 articles per page) -->\n      <div class="pagination-container" id="latestPagination">{pagination_html}</div>\n    </section>',
         html,
         flags=re.DOTALL
     )
 
+    # Replace categoryBlocksContainer content if present
+    if '<div class="category-blocks-grid" id="categoryBlocksContainer">' in html:
+        html = re.sub(
+            r'(<div class="category-blocks-grid" id="categoryBlocksContainer">)(.*?)(</div>)',
+            rf'\1{cats_html}\3',
+            html,
+            flags=re.DOTALL
+        )
+
     # Cache buster on script tags
     html = re.sub(
         r'<script src="/?js/articles-data.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/articles-data.js?v=20261019a"></script>',
+        r'<script src="/js/articles-data.js?v=20261019b"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/reader-modal.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/reader-modal.js?v=20261019a"></script>',
+        r'<script src="/js/reader-modal.js?v=20261019b"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/search-filter.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/search-filter.js?v=20261019a"></script>',
+        r'<script src="/js/search-filter.js?v=20261019b"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/app.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/app.js?v=20261019a"></script>',
+        r'<script src="/js/app.js?v=20261019b"></script>',
         html
     )
 
     with open(INDEX_FILE, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"index.html pre-rendered with all {len(ALL_ARTICLES)} articles, Lead Hero, and cache-busting scripts!")
+    print(f"index.html pre-rendered with 5 hero stories, 12-item page 1, pagination, and clean categories!")
 
 if __name__ == "__main__":
     prerender()

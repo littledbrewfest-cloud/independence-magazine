@@ -350,7 +350,7 @@ def render_article_html(article):
         <button class="theme-switch-btn" id="articleThemeBtn" title="Toggle Appearance">
           <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" /></svg>
         </button>
-        <a href="/#newsletterSection" class="btn btn-primary btn-sm">Subscribe</a>
+        <a href="/#latestSection" class="btn btn-primary btn-sm">Explore Stories</a>
       </div>
     </div>
     <div class="reading-progress-bar" id="readingProgressBar"></div>
@@ -474,36 +474,37 @@ def render_article_html(article):
 </html>"""
 
 def main():
-    bio_count = len([a for a in ALL_ARTICLES if a['categorySlug'] == 'biography'])
-    celeb_count = len([a for a in ALL_ARTICLES if a['categorySlug'] == 'celebrity'])
+    bio_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'biography'])
+    celeb_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'celebrity'])
+    ent_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'entertainment'])
     categories_data = [
-      {
-        "name": "Biography",
-        "slug": "biography",
-        "description": "In-depth profiles, verified histories, and untold lives of influential global figures.",
-        "count": bio_count,
-        "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
-      },
       {
         "name": "Celebrity",
         "slug": "celebrity",
-        "description": "Profiles of prominent personalities, public relationships, and cultural legacies.",
+        "description": "High-profile personalities, public marriages, net worth, and life stories.",
         "count": celeb_count,
         "cover": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
       },
       {
-        "name": "Culture",
-        "slug": "culture",
-        "description": "Critical analysis of arts, heritage, societal movements, and modern discourse.",
-        "count": 3,
-        "cover": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=800&q=80"
+        "name": "Biography",
+        "slug": "biography",
+        "description": "Comprehensive life retrospectives, verified background, and archival career histories.",
+        "count": bio_count,
+        "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
       },
       {
-        "name": "Business",
-        "slug": "business",
-        "description": "Strategic enterprise, executive leadership, capital allocation, and market dynamics.",
-        "count": 2,
-        "cover": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+        "name": "Entertainment",
+        "slug": "entertainment",
+        "description": "Television, cinema, music lineages, and performing arts features.",
+        "count": ent_count or 1,
+        "cover": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "All Stories",
+        "slug": "all",
+        "description": "Browse our complete archive of fact-checked biographical features and investigative reports.",
+        "count": len(ALL_ARTICLES),
+        "cover": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80"
       }
     ]
 
