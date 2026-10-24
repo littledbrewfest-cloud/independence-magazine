@@ -229,22 +229,22 @@ def prerender():
     # Cache buster on script tags
     html = re.sub(
         r'<script src="/?js/articles-data.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/articles-data.js?v=20261022b"></script>',
+        r'<script src="/js/articles-data.js?v=20261024a"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/reader-modal.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/reader-modal.js?v=20261022b"></script>',
+        r'<script src="/js/reader-modal.js?v=20261024a"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/search-filter.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/search-filter.js?v=20261022b"></script>',
+        r'<script src="/js/search-filter.js?v=20261024a"></script>',
         html
     )
     html = re.sub(
         r'<script src="/?js/app.js(\?v=[^"]*)?"></script>',
-        r'<script src="/js/app.js?v=20261022b"></script>',
+        r'<script src="/js/app.js?v=20261024a"></script>',
         html
     )
 
