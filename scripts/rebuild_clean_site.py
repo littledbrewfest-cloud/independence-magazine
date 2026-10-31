@@ -46,6 +46,64 @@ def render_article_html(article):
           </div>
         </a>"""
 
+    # Build BreadcrumbList Schema (Google SERP Breadcrumbs)
+    breadcrumb_schema_obj = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.independencemagazine.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": article['category'],
+                "item": f"https://www.independencemagazine.com/#{article['categorySlug']}"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": article['title'],
+                "item": canonical_url
+            }
+        ]
+    }
+    breadcrumb_json = json.dumps(breadcrumb_schema_obj, indent=2)
+
+    # Extract FAQs for FAQPage Schema (Google Rich Results snippet)
+    raw_html = article.get('contentHtml', '')
+    faq_script_html = ""
+    parts = re.split(r'<h[23][^>]*>(?:Frequently Asked Questions|FAQs)[^<]*</h[23]>', raw_html, flags=re.IGNORECASE)
+    if len(parts) > 1:
+        faq_section = parts[1]
+        pairs = re.findall(r'<h[34][^>]*>(.*?)</h[34]>\s*<p[^>]*>(.*?)</p>', faq_section, re.DOTALL)
+        if not pairs:
+            pairs = re.findall(r'<strong[^>]*>(.*?)</strong>\s*<p[^>]*>(.*?)</p>', faq_section, re.DOTALL)
+        faq_items = []
+        for q, ans in pairs:
+            cq = re.sub(r'<[^>]+>', '', q).strip()
+            ca = re.sub(r'<[^>]+>', '', ans).strip()
+            if cq and ca:
+                faq_items.append({
+                    "@type": "Question",
+                    "name": cq,
+                    "acceptedAnswer": {
+                        "@type": "Answer",
+                        "text": ca
+                    }
+                })
+        if faq_items:
+            faq_schema_obj = {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faq_items
+            }
+            faq_json = json.dumps(faq_schema_obj, indent=2)
+            faq_script_html = f'\n  <!-- Google Structured Data (Schema.org FAQPage for SERP Accordions) -->\n  <script type="application/ld+json">\n  {faq_json}\n  </script>'
+
     return f"""<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -316,7 +374,10 @@ def render_article_html(article):
       }}
     }}
   }}
-  </script>
+  <!-- Google Structured Data (Schema.org BreadcrumbList) -->
+  <script type="application/ld+json">
+  {breadcrumb_json}
+  </script>{faq_script_html}
 </head>
 <body>
   <!-- Top Utility Bar -->
@@ -543,7 +604,7 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-13</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
