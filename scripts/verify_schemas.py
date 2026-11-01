@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 
-for slug in ["nicolo-robert-tucci", "yasmin-abdallah", "jillian-beth-gumbel"]:
+for slug in ["anna-kate-denver", "shelley-covel-rowland", "steven-cauble"]:
     path = f"{slug}/index.html"
     with open(path, "r", encoding="utf-8") as f:
         html = f.read()

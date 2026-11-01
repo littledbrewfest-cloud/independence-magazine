@@ -604,7 +604,7 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-10-31</lastmod>
+    <lastmod>2026-11-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

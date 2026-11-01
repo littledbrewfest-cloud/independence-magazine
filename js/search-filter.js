@@ -5,8 +5,11 @@
 
 const SearchFilter = {
   activeCategory: "all",
+  initialized: false,
 
   init() {
+    if (this.initialized) return;
+    this.initialized = true;
     this.searchModal = document.getElementById("searchModal");
     this.searchInput = document.getElementById("searchInputField");
     this.searchResults = document.getElementById("searchResultsContainer");
@@ -187,3 +190,11 @@ const SearchFilter = {
 };
 
 window.SearchFilter = SearchFilter;
+
+if (typeof document !== 'undefined') {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => SearchFilter.init());
+  } else {
+    SearchFilter.init();
+  }
+}

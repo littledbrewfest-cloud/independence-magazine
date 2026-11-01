@@ -7,18 +7,18 @@ const App = {
   theme: "light", // 'light' | 'sepia' | 'dark'
 
   init() {
-    this.initTheme();
-    this.initDateTime();
-    this.initMobileNav();
-    this.renderHeroSection();
-    this.renderTrendingSection();
-    this.renderLatestArticles("all");
-    this.renderCategoryBlocks();
-    this.initNewsletter();
+    try { this.initTheme(); } catch (e) { console.error("Theme init error:", e); }
+    try { this.initDateTime(); } catch (e) { console.error("DateTime init error:", e); }
+    try { this.initMobileNav(); } catch (e) { console.error("MobileNav init error:", e); }
+    try { this.renderHeroSection(); } catch (e) { console.error("HeroSection error:", e); }
+    try { this.renderTrendingSection(); } catch (e) { console.error("TrendingSection error:", e); }
+    try { this.renderLatestArticles("all"); } catch (e) { console.error("LatestArticles error:", e); }
+    try { this.renderCategoryBlocks(); } catch (e) { console.error("CategoryBlocks error:", e); }
+    try { this.initNewsletter(); } catch (e) { console.error("Newsletter error:", e); }
 
     // Init modules
-    if (window.ReaderModal) window.ReaderModal.init();
-    if (window.SearchFilter) window.SearchFilter.init();
+    try { if (window.ReaderModal) window.ReaderModal.init(); } catch (e) { console.error("ReaderModal error:", e); }
+    try { if (window.SearchFilter) window.SearchFilter.init(); } catch (e) { console.error("SearchFilter error:", e); }
 
     // Scroll listeners for sticky header compact logo & shadow
     window.addEventListener("scroll", () => {
@@ -334,28 +334,25 @@ const App = {
       });
     });
 
-    const form = document.getElementById("newsletterSignupForm");
-    if (form) {
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const input = document.getElementById("newsletterEmailInput");
-        const email = input?.value.trim();
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = document.getElementById("newsletterEmailInput");
+      const email = input?.value.trim();
 
-        if (!email || !email.includes("@")) {
-          this.showToast("Please enter a valid email address.");
-          return;
-        }
+      if (!email || !email.includes("@")) {
+        this.showToast("Please enter a valid email address.");
+        return;
+      }
 
-        const subscribers = JSON.parse(localStorage.getItem("independence_subscribers") || "[]");
-        if (!subscribers.includes(email)) {
-          subscribers.push(email);
-          localStorage.setItem("independence_subscribers", JSON.stringify(subscribers));
-        }
+      const subscribers = JSON.parse(localStorage.getItem("independence_subscribers") || "[]");
+      if (!subscribers.includes(email)) {
+        subscribers.push(email);
+        localStorage.setItem("independence_subscribers", JSON.stringify(subscribers));
+      }
 
-        input.value = "";
-        this.showToast("Welcome to Independence Magazine. Confirmation sent.");
-      });
-    }
+      input.value = "";
+      this.showToast("Welcome to Independence Magazine. Confirmation sent.");
+    });
   },
 
   /* ------------------------------------------------------------------------
