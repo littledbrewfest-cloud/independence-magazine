@@ -4,7 +4,7 @@
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -43,6 +43,54 @@
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.independencemagazine.com/anya-robbie/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/anya-robbie-cover.jpg</image:loc>
+      <image:title>Anya Robbie: Inside Margot Robbie’s Sister’s Life, Career, and Family Story - Biography Photo</image:title>
+      <image:caption>Anya Robbie, Australian accounting professional and elder sister of actress Margot Robbie, pictured during a private family trip.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/anya-robbie-middle.jpg</image:loc>
+      <image:title>Anya Robbie: Inside Margot Robbie’s Sister’s Life, Career, and Family Story - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Anya Robbie: Inside Margot Robbie’s Sister’s Life, Career, and Family Story during key career milestones.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.independencemagazine.com/ann-belsky/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/ann-belsky-cover.jpg</image:loc>
+      <image:title>Ann Belsky: Her Broadway Design Career, Marriage to Rick Moranis, and Enduring Legacy - Biography Photo</image:title>
+      <image:caption>Ann Belsky, celebrated Broadway costume and makeup designer, photographed during a New York theatrical opening.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/ann-belsky-middle.jpg</image:loc>
+      <image:title>Ann Belsky: Her Broadway Design Career, Marriage to Rick Moranis, and Enduring Legacy - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Ann Belsky: Her Broadway Design Career, Marriage to Rick Moranis, and Enduring Legacy during key career milestones.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://www.independencemagazine.com/michael-cannata-jr/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/michael-cannata-jr-cover.jpg</image:loc>
+      <image:title>Who Is Michael Cannata Jr.? Inside Doris Roberts’ Only Son’s Life and Production Career - Biography Photo</image:title>
+      <image:caption>Michael Cannata Jr., television director and only son of actress Doris Roberts, photographed at an industry event.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.independencemagazine.com/assets/covers/michael-cannata-jr-middle.jpg</image:loc>
+      <image:title>Who Is Michael Cannata Jr.? Inside Doris Roberts’ Only Son’s Life and Production Career - Editorial Portrait</image:title>
+      <image:caption>Editorial photo of Who Is Michael Cannata Jr.? Inside Doris Roberts’ Only Son’s Life and Production Career during key career milestones.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.independencemagazine.com/shelley-covel-rowland/</loc>

@@ -374,6 +374,8 @@ def render_article_html(article):
       }}
     }}
   }}
+  </script>
+
   <!-- Google Structured Data (Schema.org BreadcrumbList) -->
   <script type="application/ld+json">
   {breadcrumb_json}
@@ -604,7 +606,7 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
