@@ -11,23 +11,23 @@ articles = db.ALL_ARTICLES
 # Sort by isoDate descending, then by views/id
 articles.sort(key=lambda a: (a.get('isoDate', '2026-01-01'), a.get('views', '0')), reverse=True)
 
-# Define heroes and trending for November 2, 2026
-HERO_MAIN_SLUG = 'anya-robbie'
+# Define heroes and trending for November 3, 2026
+HERO_MAIN_SLUG = 'shihuanuo'
 HERO_SUB_SLUGS = [
-    'ann-belsky',
-    'michael-cannata-jr',
-    'anna-kate-denver',
-    'shelley-covel-rowland',
-    'steven-cauble'
+    'lavelda-fann',
+    'olivia-rose-cameron',
+    'michael-levonchuck',
+    'anya-robbie',
+    'ann-belsky'
 ]
 
 TRENDING_MAP = {
-    'anya-robbie': 1,
-    'ann-belsky': 2,
-    'michael-cannata-jr': 3,
-    'anna-kate-denver': 4,
-    'shelley-covel-rowland': 5,
-    'steven-cauble': 6
+    'shihuanuo': 1,
+    'lavelda-fann': 2,
+    'olivia-rose-cameron': 3,
+    'michael-levonchuck': 4,
+    'anya-robbie': 5,
+    'ann-belsky': 6
 }
 
 for a in articles:
@@ -67,4 +67,4 @@ with open(DB_FILE, "w", encoding="utf-8") as f:
         f.write("    },\n")
     f.write("]\n")
 
-print(f"Successfully sorted {len(articles)} articles by date descending and configured heroes & trending for Nov 2, 2026!")
+print(f"Successfully sorted {len(articles)} articles by date descending and configured heroes & trending for Nov 3, 2026!")

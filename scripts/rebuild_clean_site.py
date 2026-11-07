@@ -540,6 +540,7 @@ def main():
     bio_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'biography'])
     celeb_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'celebrity'])
     ent_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'entertainment'])
+    lifestyle_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'lifestyle'])
     categories_data = [
       {
         "name": "Celebrity",
@@ -554,6 +555,13 @@ def main():
         "description": "Comprehensive life retrospectives, verified background, and archival career histories.",
         "count": bio_count,
         "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Lifestyle & Trends",
+        "slug": "lifestyle",
+        "description": "Wellness discoveries, practical consumer guides, beauty trends, and modern living.",
+        "count": lifestyle_count,
+        "cover": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
       },
       {
         "name": "Entertainment",
@@ -606,7 +614,7 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
