@@ -38,17 +38,22 @@ const App = {
   },
 
   /* ------------------------------------------------------------------------
-     THEME MANAGEMENT (Light / Sepia / Dark)
+     THEME MANAGEMENT (Light / Dark)
   ------------------------------------------------------------------------ */
+  toggleTheme() {
+    const next = this.theme === "dark" ? "light" : "dark";
+    this.setTheme(next);
+  },
+
   initTheme() {
     const savedTheme = localStorage.getItem("independence_theme") || "light";
-    this.setTheme(savedTheme);
+    this.setTheme(savedTheme === "dark" ? "dark" : "light");
 
     const themeToggleBtn = document.getElementById("themeToggleBtn");
     if (themeToggleBtn) {
-      themeToggleBtn.addEventListener("click", () => {
-        const next = this.theme === "light" ? "sepia" : (this.theme === "sepia" ? "dark" : "light");
-        this.setTheme(next);
+      themeToggleBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.toggleTheme();
       });
     }
   },

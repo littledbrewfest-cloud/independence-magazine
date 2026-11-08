@@ -25,11 +25,21 @@ def render_article_html(article):
     clean_caption = article['coverCaption'].replace('"', '&quot;')
     clean_title = article['title'].replace('"', '&quot;')
 
-    # Compute 3 related articles (prefer same category, fallback to others)
-    related_candidates = [a for a in ALL_ARTICLES if a['id'] != article['id']]
-    same_cat = [a for a in related_candidates if a['categorySlug'] == article['categorySlug']]
-    diff_cat = [a for a in related_candidates if a['categorySlug'] != article['categorySlug']]
-    curated_related = (same_cat + diff_cat)[:3]
+    cat_slug = article.get('categorySlug', 'celebrity')
+    if cat_slug in ['lifestyle', 'technology', 'tech']:
+        related_heading = "Related Lifestyle & Practical Guides"
+        schema_type = "Article"
+        related_candidates = [a for a in ALL_ARTICLES if a['id'] != article['id']]
+        same_cat = [a for a in related_candidates if a.get('categorySlug') in ['lifestyle', 'technology', 'tech']]
+        diff_cat = [a for a in related_candidates if a.get('categorySlug') not in ['lifestyle', 'technology', 'tech']]
+        curated_related = (same_cat + diff_cat)[:3]
+    else:
+        related_heading = "Related Biographies & Recommended Reads"
+        schema_type = "NewsArticle"
+        related_candidates = [a for a in ALL_ARTICLES if a['id'] != article['id']]
+        same_cat = [a for a in related_candidates if a.get('categorySlug') == article.get('categorySlug')]
+        diff_cat = [a for a in related_candidates if a.get('categorySlug') != article.get('categorySlug')]
+        curated_related = (same_cat + diff_cat)[:3]
 
     related_cards_html = ""
     for rel in curated_related:
@@ -108,6 +118,13 @@ def render_article_html(article):
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
+  <script>
+    try {{
+      if (localStorage.getItem("independence_theme") === "dark") {{
+        document.documentElement.setAttribute("data-theme", "dark");
+      }}
+    }} catch(e) {{}}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{article['title']} | Independence Magazine</title>
   <meta name="description" content="{article['excerpt']}">
@@ -331,11 +348,11 @@ def render_article_html(article):
     }}
   </style>
 
-  <!-- Google Structured Data (Schema.org NewsArticle & Rich ImageObject) -->
+  <!-- Google Structured Data (Schema.org {schema_type} & Rich ImageObject) -->
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
+    "@type": "{schema_type}",
     "mainEntityOfPage": {{
       "@type": "WebPage",
       "@id": "{canonical_url}"
@@ -468,10 +485,10 @@ def render_article_html(article):
       {article['contentHtml']}
     </div>
 
-    <!-- Internal Linking: Related Biographies Grid -->
+    <!-- Internal Linking: Related Grid -->
     <section class="related-profiles-section" style="margin-top: 50px; padding-top: 32px; border-top: 1px solid var(--border-light);">
       <h3 style="font-family: var(--font-serif); font-size: 1.45rem; font-weight: 800; margin-bottom: 20px; color: var(--text-primary);">
-        Related Biographies & Recommended Reads
+        {related_heading}
       </h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
         {related_cards_html}
@@ -541,6 +558,7 @@ def main():
     celeb_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'celebrity'])
     ent_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'entertainment'])
     lifestyle_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'lifestyle'])
+    tech_count = len([a for a in ALL_ARTICLES if a.get('categorySlug') == 'technology'])
     categories_data = [
       {
         "name": "Celebrity",
@@ -555,6 +573,13 @@ def main():
         "description": "Comprehensive life retrospectives, verified background, and archival career histories.",
         "count": bio_count,
         "cover": "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "name": "Technology & Gear",
+        "slug": "technology",
+        "description": "Essential consumer electronics, charging standards, hardware guides, and tech innovation.",
+        "count": tech_count,
+        "cover": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
       },
       {
         "name": "Lifestyle & Trends",
@@ -614,7 +639,7 @@ if (typeof window !== 'undefined') {{
   <!-- Core Publication Pages -->
   <url>
     <loc>https://www.independencemagazine.com/</loc>
-    <lastmod>2026-11-03</lastmod>
+    <lastmod>2026-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>

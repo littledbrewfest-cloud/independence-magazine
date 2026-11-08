@@ -11,23 +11,23 @@ articles = db.ALL_ARTICLES
 # Sort by isoDate descending, then by views/id
 articles.sort(key=lambda a: (a.get('isoDate', '2026-01-01'), a.get('views', '0')), reverse=True)
 
-# Define heroes and trending for November 3, 2026
-HERO_MAIN_SLUG = 'shihuanuo'
+# Define heroes and trending for November 7, 2026
+HERO_MAIN_SLUG = 'portable-phone-chargers'
 HERO_SUB_SLUGS = [
-    'lavelda-fann',
-    'olivia-rose-cameron',
-    'michael-levonchuck',
-    'anya-robbie',
-    'ann-belsky'
+    'john-william-mcdonald',
+    'toni-dalto',
+    'peta-gibb',
+    'shihuanuo',
+    'lavelda-fann'
 ]
 
 TRENDING_MAP = {
-    'shihuanuo': 1,
-    'lavelda-fann': 2,
-    'olivia-rose-cameron': 3,
-    'michael-levonchuck': 4,
-    'anya-robbie': 5,
-    'ann-belsky': 6
+    'portable-phone-chargers': 1,
+    'john-william-mcdonald': 2,
+    'toni-dalto': 3,
+    'peta-gibb': 4,
+    'shihuanuo': 5,
+    'lavelda-fann': 6
 }
 
 for a in articles:
