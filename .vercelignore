@@ -1,2 +1,10 @@
-server.py
+.git
+.github
+.vercel
 scripts/
+assets/templates/
+__pycache__/
+*.py
+*.bat
+*.log
+*.txt.bak
